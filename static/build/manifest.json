@@ -1,0 +1,95 @@
+{
+  "resources/css/jquery-ui.css": {
+    "file": "assets/jquery-ui-CaUesXpy.css",
+    "src": "resources/css/jquery-ui.css",
+    "isEntry": true,
+    "name": "jquery-ui",
+    "names": [
+      "jquery-ui.css"
+    ]
+  },
+  "resources/css/mmh1xmw.css": {
+    "file": "assets/mmh1xmw-6z2rm5lq.css",
+    "src": "resources/css/mmh1xmw.css",
+    "isEntry": true,
+    "name": "mmh1xmw",
+    "names": [
+      "mmh1xmw.css"
+    ]
+  },
+  "resources/css/site.css": {
+    "file": "assets/site-K3BrQlGi.css",
+    "src": "resources/css/site.css",
+    "isEntry": true,
+    "name": "site",
+    "names": [
+      "site.css"
+    ]
+  },
+  "resources/css/style.css": {
+    "file": "assets/style-BbyUD8Jw.css",
+    "src": "resources/css/style.css",
+    "isEntry": true,
+    "name": "style",
+    "names": [
+      "style.css"
+    ]
+  },
+  "resources/css/viewer.css": {
+    "file": "assets/viewer-DLW-EvGW.css",
+    "src": "resources/css/viewer.css",
+    "isEntry": true,
+    "name": "viewer",
+    "names": [
+      "viewer.css"
+    ]
+  },
+  "resources/js/jquery-3.6.0.min.js": {
+    "file": "assets/jquery-3.6.0.min-DQVDBd0E.js",
+    "name": "jquery-3.6.0.min",
+    "src": "resources/js/jquery-3.6.0.min.js",
+    "isEntry": true
+  },
+  "resources/js/jquery-ui.js": {
+    "file": "assets/jquery-ui-CrBkTqTu.js",
+    "name": "jquery-ui",
+    "src": "resources/js/jquery-ui.js",
+    "isEntry": true
+  },
+  "resources/js/lottie.min.js": {
+    "file": "assets/lottie.min-CHTNzAdv.js",
+    "name": "lottie.min",
+    "src": "resources/js/lottie.min.js",
+    "isEntry": true
+  },
+  "resources/js/scr-actions.js": {
+    "file": "assets/scr-actions-Da-6faUE.js",
+    "name": "scr-actions",
+    "src": "resources/js/scr-actions.js",
+    "isEntry": true
+  },
+  "resources/js/scr-delete.js": {
+    "file": "assets/scr-delete-l0sNRNKZ.js",
+    "name": "scr-delete",
+    "src": "resources/js/scr-delete.js",
+    "isEntry": true
+  },
+  "resources/js/scr-display.js": {
+    "file": "assets/scr-display-C_sVqv-E.js",
+    "name": "scr-display",
+    "src": "resources/js/scr-display.js",
+    "isEntry": true
+  },
+  "resources/js/scr-send.js": {
+    "file": "assets/scr-send-l0sNRNKZ.js",
+    "name": "scr-send",
+    "src": "resources/js/scr-send.js",
+    "isEntry": true
+  },
+  "resources/js/site.js": {
+    "file": "assets/site-l0sNRNKZ.js",
+    "name": "site",
+    "src": "resources/js/site.js",
+    "isEntry": true
+  }
+}

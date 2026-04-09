@@ -1,0 +1,167 @@
+<main id="story-container"
+    class="w-screen h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden scroll-smooth{{ else }}overflow-hidden{{ /if }}">
+    {{# The horizontal-scroll class triggers the wheel-to-scroll JS in layout.antlers.html #}}
+    <div
+        class="branch-container flex flex-nowrap gap-0 
+               {{ if is_vertical }}flex-col w-screen h-auto{{ else }}horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-screen{{ /if }}">
+
+        {{# Loop through the Tiles selected for this Story #}}
+        {{ add_tiles }}
+        <section
+            class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 {{ if is_vertical }}w-screen h-auto{{ else }}w-auto min-w-0 h-screen{{ /if }}">
+
+
+            {{# Loop through each Layer within the Tile #}}
+            {{ add_layers }}
+            <div class="object {{ type }} w-full h-full pointer-events-none"
+                style="z-index: {{ layer_z_index or 0 }}; grid-area: 1 / 1; position: relative;">
+
+
+                {{# Inner wrapper using safer 'or' syntax for compatibility #}}
+                <div class="{{ if first }}relative{{ else }}absolute{{ /if }}"
+                    style="width: {{ layer_size or 100 }}%; height: {{ layer_size or 100 }}%; left: {{ layer_x or 0 }}%; top: {{ layer_y or 0 }}%;">
+
+                    {{ if link_to_branch }}
+                    <a href="{{ link_to_branch:url }}"
+                        class="block w-full h-full pointer-events-auto transition-all {{ if live_preview || (get:live-preview) || (get:live_preview) }}border-2 border-dashed border-indigo-500/50 bg-indigo-500/5 hover:bg-indigo-500/20 shadow-inner flex items-center justify-center{{ /if }}"
+                        title="Link to: {{ link_to_branch:title }}">
+                        {{ if (live_preview || (get:live-preview) || (get:live_preview)) && !layer_asset && !layer_text
+                        }}
+                        <span class="text-indigo-400 opacity-50 text-2xl">🔗</span>
+                        {{ /if }}
+                        {{ /if }}
+
+                        {{# Unified Asset Handling: Detect if it's a Lottie (JSON/dotLottie) or Image #}}
+                        {{ if layer_asset }}
+                        {{ if (layer_asset:extension == 'json') || (layer_asset:extension == 'lottie') }}
+                        <dotlottie-player src="{{ layer_asset:url }}" background="transparent"
+                            style="width: 100%; {{ if !is_vertical }}height: 100%;{{ /if }}" {{ if lottie_loop }}loop{{
+                            /if }} {{ if lottie_autoplay }}autoplay{{ /if }} class="pointer-events-auto">
+                        </dotlottie-player>
+                        {{ else }}
+                        <img src="{{ layer_image:url or layer_asset:url }}"
+                            alt="{{ title }}"
+                            class="w-full pointer-events-auto max-w-none {{ if is_vertical }}h-auto{{ else }}h-full object-contain{{ /if }}">
+                        {{ /if }}
+                        {{ /if }}
+
+                        {{ if layer_text }}
+                        <div class="w-full h-full flex items-center justify-center p-8">
+                            <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
+                                <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
+                                    {{ layer_text or content }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ /if }}
+
+                        {{ if link_to_branch }}
+                    </a>
+                    {{ /if }}
+
+                </div>
+            </div>
+
+            {{ /add_layers }}
+
+            {{# Tile content fallback #}}
+            {{ if content }}
+            <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
+                <div
+                    class="pointer-events-auto max-w-4xl prose prose-indigo prose-2xl text-center bg-white/60 backdrop-blur-md p-12 rounded-[2.5rem] shadow-2xl border border-white/40 text-indigo-950 font-semibold">
+                    {{ content }}
+                </div>
+            </div>
+            {{ /if }}
+
+        </section>
+        {{ /add_tiles }}
+
+        {{ if !add_tiles }}
+        <div class="w-full text-center p-20">
+            <p class="text-2xl text-indigo-300 italic font-medium">This story has no tiles yet.</p>
+        </div>
+        {{ /if }}
+
+    </div>
+</main>
+
+{{# Navigation #}}
+<nav class="fixed top-12 left-12 z-50 flex items-center gap-6">
+    <a href="/stories"
+        class="bg-indigo-600 text-white p-5 rounded-full shadow-2xl hover:bg-indigo-500 hover:scale-110 active:scale-95 transition-all duration-300 group">
+        <svg class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+    </a>
+    <div class="bg-white/90 backdrop-blur-md px-8 py-4 rounded-[1.5rem] shadow-2xl border border-indigo-100">
+        <h1 class="text-xl font-black text-indigo-950 tracking-tight">{{ title }}</h1>
+    </div>
+</nav>
+
+<style>
+    /* Scrollytelling Core Styles */
+    #story-container {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #story-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tile {
+        flex: 0 0 auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .tile img {
+        display: block;
+    }
+
+    {{ if is_vertical }}
+
+    .tile {
+        width: 100vw !important;
+        height: auto !important;
+    }
+
+    .tile img {
+        width: 100% !important;
+        height: auto !important;
+    }
+
+    {{ else }}
+
+    .tile {
+        width: auto !important;
+        height: 100vh !important;
+    }
+
+    .tile img {
+        width: auto !important;
+        height: 100% !important;
+    }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(79, 70, 229, 0.1);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(79, 70, 229, 0.2);
+    }
+
+    {{ /if }}
+</style>

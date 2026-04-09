@@ -1,0 +1,57 @@
+<html lang="en" class="h-full">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>{{ title ?? 'Scrollytelling' }}</title>
+
+	{{# Load CSS and JS through Vite #}}
+	{{ vite src="resources/js/site.js|resources/css/site.css|resources/css/style.css|resources/css/viewer.css|resources/css/jquery-ui.css|resources/css/mmh1xmw.css|resources/js/jquery-3.6.0.min.js|resources/js/jquery-ui.js|resources/js/lottie.min.js|resources/js/scr-display.js|resources/js/scr-delete.js|resources/js/scr-actions.js|resources/js/scr-send.js" }}
+
+	{{# dotLottie Player for both JSON and .lottie files #}}
+	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+
+
+	<link rel="icon" type="image/x-icon" href="/favicon.ico">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3"></script>
+</head>
+
+<body class="m-0 p-0 overflow-hidden">
+	{{ template_content }}
+
+
+	<script>
+		// enable horizontal scrolling
+		document.addEventListener("DOMContentLoaded", () => {
+
+			const scrollContainer = document.querySelector(".horizontal-scroll");
+
+			if (scrollContainer) {
+				scrollContainer.addEventListener("wheel", (evt) => {
+					if (evt.deltaY !== 0 && evt.deltaX === 0) {
+						evt.preventDefault();
+						scrollContainer.scrollLeft += evt.deltaY;
+					}
+				}, { passive: false });
+			}
+		});
+
+		// Helper functions for animations (can be used by your scripts)
+		function setupVisible(animation) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+						animation.play();
+					} else {
+						animation.pause();
+					}
+				});
+			}, { threshold: 0.5 });
+			observer.observe(animation.wrapper);
+		}
+	</script>
+</body>
+
+</html>

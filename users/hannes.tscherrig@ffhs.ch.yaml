@@ -1,0 +1,13 @@
+name: 'Hannes Tscherrig'
+super: true
+id: 05989e52-cea4-419f-8a45-45c76a41ebe6
+password_hash: $2y$12$4n9usD2VB5jhPMmLxtrx1eOds6JO1WDNEoJ42lEc52jNXFJa.u402
+preferences:
+  collections:
+    stories:
+      view: tree
+      after_save: continue_editing
+    tiles:
+      view: list
+    pages:
+      view: tree

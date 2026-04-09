@@ -1,0 +1,94 @@
+title: Layer
+fields:
+  -
+    handle: layer_type
+    field:
+      options:
+        asset: Asset
+        text: Text
+        link: Link
+      default: asset
+      type: button_group
+      display: 'Layer Type'
+      instructions: 'Select what this layer should contain.'
+  -
+    handle: layer_asset
+    field:
+      container: assets
+      max_files: 1
+      type: assets
+      display: 'Layer Media'
+      instructions: 'Upload an image or a Lottie .json file.'
+      show_when:
+        layer_type: asset
+  -
+    handle: lottie_loop
+    field:
+      default: true
+      type: toggle
+      display: 'Loop Animation'
+      show_when:
+        layer_type: asset
+  -
+    handle: lottie_autoplay
+    field:
+      default: true
+      type: toggle
+      display: 'Autoplay'
+      show_when:
+        layer_type: asset
+  -
+    handle: layer_text
+    field:
+      buttons:
+        - bold
+        - italic
+        - unorderedlist
+        - orderedlist
+        - quote
+        - link
+        - code
+      type: markdown
+      display: 'Layer Text'
+      show_when:
+        layer_type: text
+  -
+    handle: link_to_branch
+    field:
+      collections:
+        - stories
+      max_items: 1
+      type: entries
+      display: 'Link to Story'
+      show_when:
+        layer_type: link
+  -
+    handle: layer_z_index
+    field:
+      min: 0
+      max: 5
+      step: 1
+      default: '0'
+      type: integer
+      display: 'Layer Z-Index'
+  -
+    handle: layer_size
+    field:
+      unit: '%'
+      default: 100
+      type: range
+      display: Size
+  -
+    handle: layer_x
+    field:
+      unit: '%'
+      default: 0
+      type: range
+      display: 'X Position (Left)'
+  -
+    handle: layer_y
+    field:
+      unit: '%'
+      default: 0
+      type: range
+      display: 'Y Position (Top)'

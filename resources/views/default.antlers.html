@@ -1,0 +1,109 @@
+<main id="story-container" class="w-screen h-screen overflow-hidden bg-white mt-0 pt-0">
+    <div class="branch-container flex flex-row flex-nowrap items-center h-screen w-screen overflow-hidden">
+
+        {{# Reference the current Tile entry #}}
+        <section
+            class="tile relative grid flex-shrink-0 h-screen w-auto min-w-[100vw] bg-white overflow-hidden m-0 p-0">
+
+            {{# Loop through each Layer within the Tile #}}
+            {{ add_layers }}
+            <div class="object {{ type }} w-full h-full pointer-events-none"
+                style="z-index: {{ layer_z_index or 0 }}; grid-area: 1 / 1; position: relative;">
+
+                {{# Inner wrapper that handles positioning and sizing #}}
+                <div class="{{ if first }}relative{{ else }}absolute{{ /if }}"
+                    style="width: {{ layer_size or 100 }}%; height: {{ layer_size or 100 }}%; left: {{ layer_x or 0 }}%; top: {{ layer_y or 0 }}%;">
+
+                    {{# Open Link Wrapper if present #}}
+                    {{ if link_to_branch }}
+                    <a href="{{ link_to_branch:url }}"
+                        class="block w-full h-full pointer-events-auto transition-all {{ if live_preview || (get:live-preview) || (get:live_preview) }}border-2 border-dashed border-indigo-500/50 bg-indigo-500/5 hover:bg-indigo-500/20 shadow-inner flex items-center justify-center{{ /if }}"
+                        title="Link to: {{ link_to_branch:title }}">
+                        {{ if (live_preview || (get:live-preview) || (get:live_preview)) && !layer_asset && !layer_text
+                        }}
+                        <span class="text-indigo-400 opacity-50 text-2xl">🔗</span>
+                        {{ /if }}
+                        {{ /if }}
+
+
+                        {{# Unified Asset Handling: Detect if it's a Lottie (JSON/dotLottie) or Image #}}
+                        {{ if layer_asset }}
+                        {{ if (layer_asset:extension == 'json') || (layer_asset:extension == 'lottie') }}
+
+                        <dotlottie-player src="{{ layer_asset:url }}" background="transparent"
+                            style="width: 100%; height: 100%;" {{ if lottie_loop }}loop{{ /if }} {{ if lottie_autoplay
+                            }}autoplay{{ /if }} class="pointer-events-auto">
+                        </dotlottie-player>
+
+                        {{ else }}
+                        <img src="{{ layer_image:url or layer_asset:url }}"
+                            alt="{{ title }}" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        {{ /if }}
+                        {{ /if }}
+
+
+
+                        {{ if layer_text }}
+                        <div class="w-full h-full flex items-center justify-center p-8">
+                            <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
+                                <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
+                                    {{ layer_text or content }}
+                                </div>
+                            </div>
+                        </div>
+                        {{ /if }}
+
+                        {{ if link_to_branch }}
+                    </a>
+                    {{ /if }}
+
+                </div>
+            </div>
+            {{ /add_layers }}
+
+            {{# Fallback if no layers #}}
+            {{ if !add_layers && content }}
+            <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
+                <div
+                    class="pointer-events-auto max-w-4xl prose prose-indigo prose-2xl text-center bg-white/60 backdrop-blur-md p-12 rounded-[2.5rem] shadow-2xl border border-white/40 text-indigo-950 font-semibold">
+                    {{ content }}
+                </div>
+            </div>
+            {{ /if }}
+
+        </section>
+
+    </div>
+</main>
+
+<style>
+    .tile {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        height: 100vh !important;
+    }
+
+    .tile img {
+        height: 100% !important;
+        width: auto !important;
+        display: block;
+    }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(79, 70, 229, 0.1);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(79, 70, 229, 0.2);
+    }
+</style>

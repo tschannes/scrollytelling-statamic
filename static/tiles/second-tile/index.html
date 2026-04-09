@@ -1,0 +1,175 @@
+<html lang="en" class="h-full">
+
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Second Tile</title>
+
+	
+	
+
+	
+	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
+
+
+
+	<link rel="icon" type="image/x-icon" href="../../favicon.ico">
+	<script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3"></script>
+
+	<link rel="stylesheet" href="../../build/assets/jquery-ui-CaUesXpy.css">
+	<link rel="stylesheet" href="../../build/assets/mmh1xmw-6z2rm5lq.css">
+	<link rel="stylesheet" href="../../build/assets/site-K3BrQlGi.css">
+	<link rel="stylesheet" href="../../build/assets/style-BbyUD8Jw.css">
+	<link rel="stylesheet" href="../../build/assets/viewer-DLW-EvGW.css">
+	<script type="module" src="../../build/assets/jquery-3.6.0.min-DQVDBd0E.js"></script>
+	<script type="module" src="../../build/assets/jquery-ui-CrBkTqTu.js"></script>
+	<script type="module" src="../../build/assets/lottie.min-CHTNzAdv.js"></script>
+	<script type="module" src="../../build/assets/scr-actions-Da-6faUE.js"></script>
+	<script type="module" src="../../build/assets/scr-delete-l0sNRNKZ.js"></script>
+	<script type="module" src="../../build/assets/scr-display-C_sVqv-E.js"></script>
+	<script type="module" src="../../build/assets/scr-send-l0sNRNKZ.js"></script>
+	<script type="module" src="../../build/assets/site-l0sNRNKZ.js"></script>
+</head>
+
+<body class="m-0 p-0 overflow-hidden">
+	<main id="story-container" class="w-screen h-screen overflow-hidden bg-white mt-0 pt-0">
+    <div class="branch-container flex flex-row flex-nowrap items-center h-screen w-screen overflow-hidden">
+
+        
+        <section
+            class="tile relative grid flex-shrink-0 h-screen w-auto min-w-[100vw] bg-white overflow-hidden m-0 p-0">
+
+            
+            
+            <div class="object new_set w-full h-full pointer-events-none"
+                style="z-index: 0; grid-area: 1 / 1; position: relative;">
+
+                
+                <div class="relative"
+                    style="width: 100%; height: 100%; left: 0%; top: 0%;">
+
+                    
+                    
+
+
+                        
+                        
+                        
+                        <img src="../../assets/02-home-middle-section.webp"
+                            alt="Second Tile" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        
+                        
+
+
+
+                        
+
+                        
+
+                </div>
+            </div>
+            
+            <div class="object new_set w-full h-full pointer-events-none"
+                style="z-index: 1; grid-area: 1 / 1; position: relative;">
+
+                
+                <div class="absolute"
+                    style="width: 26%; height: 26%; left: 9%; top: 6%;">
+
+                    
+                    
+
+
+                        
+                        
+                        
+                        <img src="../../assets/02-home-middle-section-girl-left.png"
+                            alt="Second Tile" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        
+                        
+
+
+
+                        
+
+                        
+
+                </div>
+            </div>
+            
+
+            
+            
+
+        </section>
+
+    </div>
+</main>
+
+<style>
+    .tile {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        height: 100vh !important;
+    }
+
+    .tile img {
+        height: 100% !important;
+        width: auto !important;
+        display: block;
+    }
+
+    /* Custom Scrollbar */
+    .custom-scrollbar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: rgba(79, 70, 229, 0.1);
+        border-radius: 10px;
+    }
+
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+        background: rgba(79, 70, 229, 0.2);
+    }
+</style>
+
+
+	<script>
+		// enable horizontal scrolling
+		document.addEventListener("DOMContentLoaded", () => {
+
+			const scrollContainer = document.querySelector(".horizontal-scroll");
+
+			if (scrollContainer) {
+				scrollContainer.addEventListener("wheel", (evt) => {
+					if (evt.deltaY !== 0 && evt.deltaX === 0) {
+						evt.preventDefault();
+						scrollContainer.scrollLeft += evt.deltaY;
+					}
+				}, { passive: false });
+			}
+		});
+
+		// Helper functions for animations (can be used by your scripts)
+		function setupVisible(animation) {
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+						animation.play();
+					} else {
+						animation.pause();
+					}
+				});
+			}, { threshold: 0.5 });
+			observer.observe(animation.wrapper);
+		}
+	</script>
+</body>
+
+</html>
