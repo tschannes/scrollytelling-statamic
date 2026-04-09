@@ -11,3 +11,5 @@ preferences:
       view: list
     pages:
       view: tree
+  start_page: collections/stories
+  theme: null
