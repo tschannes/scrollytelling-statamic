@@ -62,7 +62,7 @@
             <div class="p-4 border-t dark:border-dark-900 flex items-center justify-between">
                 <p class="text-sm text-grey-70 dark:text-dark-175">Selected stories will be generated and zipped with all
                     assets.</p>
-                <button type="submit" id="generate-btn" class="btn-primary">Generate &amp; Bundle ZIP</button>
+                <button class="bg-blue-500 hover:bg-blue-z00 text-white font-bold py-2 px-4 rounded" type="submit" id="generate-btn" class="btn-primary">Generate &amp; Bundle ZIP</button>
             </div>
         </form>
     </div>
