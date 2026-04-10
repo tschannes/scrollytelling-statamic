@@ -7,7 +7,7 @@
 	<title>{{ title ?? 'Scrollytelling' }}</title>
 
 	{{# Load CSS and JS through Vite #}}
-	{{ vite src="resources/js/site.js|resources/css/site.css|resources/css/style.css|resources/css/viewer.css|resources/css/jquery-ui.css|resources/css/mmh1xmw.css|resources/js/jquery-3.6.0.min.js|resources/js/jquery-ui.js|resources/js/lottie.min.js|resources/js/scr-display.js|resources/js/scr-delete.js|resources/js/scr-actions.js|resources/js/scr-send.js" }}
+	{{ vite src="resources/css/site.css|resources/js/site.js|resources/js/lottie.min.js" }}
 
 	{{# dotLottie Player for both JSON and .lottie files #}}
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>

@@ -29,16 +29,15 @@ add_layers:
     layer_type: asset
   -
     id: lHUmLBfjd1wuvXhljA2U2
-    lottie_loop: false
-    lottie_autoplay: false
     layer_z_index: 4
     layer_size: 31
     layer_x: 60
     layer_y: 44
     type: new_set
     enabled: true
-    layer_type: asset
-updated_by: 6d1fc6b8-15c9-4bc4-9e52-a9a80161e35e
-updated_at: 1775739706
+    layer_type: link
+    link_to_branch: fb71329d-770e-4d5b-b756-c59b40fbc6e4
+updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
+updated_at: 1775808609
 ---
 Demo Content
