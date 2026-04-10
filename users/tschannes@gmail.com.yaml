@@ -1,0 +1,33 @@
+name: editor
+roles:
+  - editor
+groups:
+  - editors
+super: false
+id: 6d1fc6b8-15c9-4bc4-9e52-a9a80161e35e
+password_hash: $2y$12$EDA6Y4w95frTfvhot2z0JOvIDHiN6eKC5zsQ.y3i.OaJAvcEwTVRO
+preferences:
+  start_page: collections/stories
+  theme:
+    id: 14
+    name: Appart
+    colors:
+      danger: '#a90a23'
+      body-bg: '#eedeca'
+      primary: '#314a4e'
+      success: '#00a969'
+      switch-bg: '#00a969'
+      content-bg: '#fffdf5'
+      progress-bar: '#a90a23'
+      ui-accent-bg: '#005398'
+      focus-outline: '#005398'
+      ui-accent-text: '#005398'
+      global-header-bg: '#1b1c1f'
+      dark-body-bg: '#1b1c1f'
+      dark-content-bg: '#141414'
+  collections:
+    stories:
+      view: tree
+    tiles:
+      view: list
+  color_mode: light

@@ -2,3 +2,40 @@ admin:
   title: Administrator
   permissions:
     - super
+  preferences:
+    nav:
+      content:
+        'content::navigation': '@hide'
+        'content::taxonomies': '@hide'
+        'content::globals': '@hide'
+      tools: '@hide'
+editor:
+  title: Editor
+  permissions:
+    - 'access cp'
+    - 'view tiles entries'
+    - 'edit tiles entries'
+    - 'create tiles entries'
+    - 'delete tiles entries'
+    - 'publish tiles entries'
+    - 'reorder tiles entries'
+    - 'edit other authors tiles entries'
+    - 'publish other authors tiles entries'
+    - 'delete other authors tiles entries'
+    - 'view stories entries'
+    - 'edit stories entries'
+    - 'create stories entries'
+    - 'delete stories entries'
+    - 'publish stories entries'
+    - 'reorder stories entries'
+    - 'edit other authors stories entries'
+    - 'publish other authors stories entries'
+    - 'delete other authors stories entries'
+    - 'view assets assets'
+    - 'upload assets assets'
+    - 'edit assets folders'
+    - 'edit assets assets'
+    - 'move assets assets'
+    - 'rename assets assets'
+    - 'delete assets assets'
+    - 'view users'
