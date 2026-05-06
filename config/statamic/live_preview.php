@@ -13,9 +13,11 @@ return [
     */
 
     'devices' => [
-        'Laptop' => ['width' => 1440, 'height' => 900],
-        'Tablet' => ['width' => 1024, 'height' => 786],
-        'Mobile' => ['width' => 375, 'height' => 812],
+        // "Full" uses a width that fits the CP preview panel without clipping.
+        // For a true full-width preview, use the "Pop Out" button in Live Preview.
+        'Full'   => ['width' => 1280, 'height' => 800],
+        'Tablet' => ['width' => 768,  'height' => 1024],
+        'Mobile' => ['width' => 390,  'height' => 844],
     ],
 
     /*

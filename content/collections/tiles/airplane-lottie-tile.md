@@ -5,7 +5,7 @@ title: airplane-lottie-tile
 add_layers:
   -
     id: X5S_bLfbR-e7lnaWDI5kZ
-    layer_asset: isometric-plane.lottie
+    layer_asset: first-tests/isometric-plane.lottie
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0

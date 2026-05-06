@@ -5,7 +5,7 @@ title: 'Lottie Link Tile'
 add_layers:
   -
     id: Veu3apqhGtfeODR34j3qh
-    layer_asset: 03-home-bottom-section.webp
+    layer_asset: first-tests/03-home-bottom-section.webp
     layer_z_index: 0
     type: new_set
     enabled: true
@@ -17,7 +17,7 @@ add_layers:
     layer_type: asset
   -
     id: nhz_SwZzmUFlkliHvdf5H
-    layer_asset: isometric-plane.lottie
+    layer_asset: first-tests/isometric-plane.lottie
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0

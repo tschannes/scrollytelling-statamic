@@ -1,19 +1,19 @@
 <main id="story-container"
-    class="w-screen h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden scroll-smooth{{ else }}overflow-hidden{{ /if }}">
+    class="w-full h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden scroll-smooth{{ else }}overflow-hidden{{ /if }}">
     {{# The horizontal-scroll class triggers the wheel-to-scroll JS in layout.antlers.html #}}
     <div
         class="branch-container flex flex-nowrap gap-0 
-               {{ if is_vertical }}flex-col w-screen h-auto{{ else }}horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-screen{{ /if }}">
+               {{ if is_vertical }}flex-col w-full h-auto{{ else }}horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-full{{ /if }}">
 
         {{# Loop through the Tiles selected for this Story #}}
         {{ add_tiles }}
         <section
-            class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 {{ if is_vertical }}w-screen h-auto{{ else }}w-auto min-w-0 h-screen{{ /if }}">
+            class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 {{ if is_vertical }}w-full h-auto{{ else }}w-auto min-w-0 h-screen{{ /if }}">
 
 
             {{# Loop through each Layer within the Tile #}}
             {{ add_layers }}
-            <div class="object {{ type }} w-full h-full pointer-events-none"
+            <div class="object {{ type }} w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: {{ layer_z_index or 0 }}; grid-area: 1 / 1; position: relative;">
 
 
@@ -124,7 +124,7 @@
     {{ if is_vertical }}
 
     .tile {
-        width: 100vw !important;
+        width: 100% !important;
         height: auto !important;
     }
 

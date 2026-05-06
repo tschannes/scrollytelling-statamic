@@ -8,7 +8,7 @@ add_layers:
   -
     id: MmW7RSMcxyP36w7zgBXqh
     layer_type: asset
-    layer_asset: misti-1.jpg
+    layer_asset: first-tests/misti-1.jpg
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0

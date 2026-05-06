@@ -6,7 +6,7 @@ add_layers:
   -
     id: 2zTTg0gxMrAG3BGOtzDrh
     layer_text: 'Blabla to be added onto the BG of Tile 3.'
-    layer_asset: 03-home-bottom-section.webp
+    layer_asset: first-tests/03-home-bottom-section.webp
     layer_z_index: 0
     type: new_set
     enabled: true

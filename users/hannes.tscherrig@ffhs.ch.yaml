@@ -8,7 +8,7 @@ preferences:
       view: tree
       after_save: continue_editing
     tiles:
-      view: list
+      view: tree
     pages:
       view: tree
   start_page: collections/stories

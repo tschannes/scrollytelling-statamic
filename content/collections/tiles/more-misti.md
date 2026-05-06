@@ -12,13 +12,13 @@ add_layers:
     layer_y: 0
     type: new_set
     enabled: true
-    layer_asset: misti-2.jpg
+    layer_asset: first-tests/misti-2.jpg
     lottie_loop: true
     lottie_autoplay: true
   -
     id: EiSJYH2RNfOglD46CvMmQ
     layer_type: asset
-    layer_asset: misti-3.jpg
+    layer_asset: first-tests/misti-3.jpg
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 1
@@ -30,7 +30,7 @@ add_layers:
   -
     id: ywPJ2RLJmit_bTHiKhPcb
     layer_type: asset
-    layer_asset: misti-4.jpg
+    layer_asset: first-tests/misti-4.jpg
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 2

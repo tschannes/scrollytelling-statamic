@@ -5,7 +5,7 @@ title: 'Second Tile'
 add_layers:
   -
     id: wrjCD6iL00wmdYIRgknNA
-    layer_asset: 02-home-middle-section.webp
+    layer_asset: first-tests/02-home-middle-section.webp
     layer_z_index: 0
     type: new_set
     enabled: true
@@ -19,7 +19,7 @@ add_layers:
     lottie_autoplay: true
   -
     id: ST416MFPX0WCD_l1xJ3Jg
-    layer_asset: 02-home-middle-section-girl-left.png
+    layer_asset: first-tests/02-home-middle-section-girl-left.png
     layer_z_index: 1
     type: new_set
     enabled: true

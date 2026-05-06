@@ -14,10 +14,10 @@ add_layers:
     layer_type: asset
     lottie_loop: true
     lottie_autoplay: true
-    layer_asset: 01-home-top-section.webp
+    layer_asset: first-tests/01-home-top-section.webp
   -
     id: tKgljTILWwkCrndWxnK6X
-    layer_asset: 02-home-middle-section-boy-right.svg
+    layer_asset: first-tests/02-home-middle-section-boy-right.svg
     layer_z_index: 2
     type: new_set
     enabled: true

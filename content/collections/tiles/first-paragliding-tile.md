@@ -5,7 +5,7 @@ title: 'First Paragliding Tile'
 add_layers:
   -
     id: '-abGx4b1c2RQmlSeXrqgv'
-    layer_asset: zeolite-2-gt-interlaken.jpeg
+    layer_asset: first-tests/zeolite-2-gt-interlaken.jpeg
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0
