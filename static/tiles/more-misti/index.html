@@ -7,7 +7,7 @@
 	<title>More Misti</title>
 
 	
-	
+	<link rel="preload" as="style" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js" /><link rel="stylesheet" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><script type="module" src="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js"></script><script type="module" src="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js"></script>
 
 	
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
@@ -33,16 +33,16 @@
 </head>
 
 <body class="m-0 p-0 overflow-hidden">
-	<main id="story-container" class="w-screen h-screen overflow-hidden bg-white mt-0 pt-0">
-    <div class="branch-container flex flex-row flex-nowrap items-center h-screen w-screen overflow-hidden">
+	<main id="story-container" class="w-full h-screen overflow-hidden bg-white mt-0 pt-0">
+    <div
+        class="branch-container horizontal-scroll flex flex-row flex-nowrap items-center h-screen w-full overflow-x-auto overflow-y-hidden">
 
         
-        <section
-            class="tile relative grid flex-shrink-0 h-screen w-auto min-w-[100vw] bg-white overflow-hidden m-0 p-0">
+        <section class="tile relative grid flex-shrink-0 w-auto min-w-0 h-screen bg-white overflow-hidden m-0 p-0">
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 1; grid-area: 1 / 1; position: relative;">
 
                 
@@ -56,8 +56,8 @@
                         
                         
                         
-                        <img src="../../assets/misti-2.jpg"
-                            alt="More Misti" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        <img src="../../assets/first-tests/misti-2.jpg" alt="More Misti"
+                            class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
                         
 
@@ -70,7 +70,7 @@
                 </div>
             </div>
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 1; grid-area: 1 / 1; position: relative;">
 
                 
@@ -84,8 +84,8 @@
                         
                         
                         
-                        <img src="../../assets/misti-3.jpg"
-                            alt="More Misti" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        <img src="../../assets/first-tests/misti-3.jpg" alt="More Misti"
+                            class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
                         
 
@@ -98,7 +98,7 @@
                 </div>
             </div>
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 2; grid-area: 1 / 1; position: relative;">
 
                 
@@ -112,8 +112,8 @@
                         
                         
                         
-                        <img src="../../assets/misti-4.jpg"
-                            alt="More Misti" class="h-full w-auto object-contain pointer-events-auto max-w-none">
+                        <img src="../../assets/first-tests/misti-4.jpg" alt="More Misti"
+                            class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
                         
 
@@ -126,7 +126,7 @@
                 </div>
             </div>
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 1; grid-area: 1 / 1; position: relative;">
 
                 
@@ -144,7 +144,8 @@
 
                         
                         <div class="w-full h-full flex items-center justify-center p-8">
-                            <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
+                            <div
+                                class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
                                 <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
                                     <h1>More Misti</h1>
 
@@ -158,7 +159,7 @@
                 </div>
             </div>
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 5; grid-area: 1 / 1; position: relative;">
 
                 
@@ -196,38 +197,6 @@
 
     </div>
 </main>
-
-<style>
-    .tile {
-        flex: 0 0 auto !important;
-        width: auto !important;
-        height: 100vh !important;
-    }
-
-    .tile img {
-        height: 100% !important;
-        width: auto !important;
-        display: block;
-    }
-
-    /* Custom Scrollbar */
-    .custom-scrollbar::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-track {
-        background: transparent;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(79, 70, 229, 0.1);
-        border-radius: 10px;
-    }
-
-    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(79, 70, 229, 0.2);
-    }
-</style>
 
 
 	<script>

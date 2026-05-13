@@ -7,7 +7,7 @@
 	<title>A branch on paragliding</title>
 
 	
-	
+	<link rel="preload" as="style" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js" /><link rel="stylesheet" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><script type="module" src="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js"></script><script type="module" src="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js"></script>
 
 	
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
@@ -34,11 +34,11 @@
 
 <body class="m-0 p-0 overflow-hidden">
 	<main id="story-container"
-    class="w-screen h-screen bg-white mt-0 pt-0 overflow-hidden">
+    class="w-full h-screen bg-white mt-0 pt-0 overflow-hidden">
     
     <div
         class="branch-container flex flex-nowrap gap-0 
-               horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-screen">
+               horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-full">
 
         
         
@@ -48,7 +48,7 @@
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -75,7 +75,7 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -115,7 +115,7 @@
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -128,12 +128,45 @@
                         
                         
                         
-                        <img src="../assets/zeolite-2-gt-interlaken.jpeg"
+                        <img src="../assets/first-tests/zeolite-2-gt-interlaken.jpeg"
                             alt="First Paragliding Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
                         
 
+                        
+
+                        
+
+                </div>
+            </div>
+
+            
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
+                style="z-index: 0; grid-area: 1 / 1; position: relative;">
+
+
+                
+                <div class="absolute"
+                    style="width: 100%; height: 100%; left: 0%; top: 0%;">
+
+                    
+
+                        
+                        
+
+                        
+                        <div class="w-full h-full flex items-center justify-center p-8">
+                            <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
+                                <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
+                                    <h1>Awesome Titles here</h1>
+<blockquote>
+<p>Great you will be young Jedi.</p>
+</blockquote>
+
+                                </div>
+                            </div>
+                        </div>
                         
 
                         
@@ -203,12 +236,12 @@
     
 
     .tile {
-        width: auto !important;
+        /*width: auto !important;*/
         height: 100vh !important;
     }
 
     .tile img {
-        width: auto !important;
+        /*width: auto !important;*/
         height: 100% !important;
     }
 

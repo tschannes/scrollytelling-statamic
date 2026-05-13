@@ -14,8 +14,21 @@ add_layers:
     layer_y: 0
     type: new_set
     enabled: true
+    layer_type: asset
+  -
+    id: TOPJYx7wEwv6jomCgDPn0
+    layer_type: text
+    layer_text: |-
+      # Awesome Titles here
+      > Great you will be young Jedi.
+    layer_z_index: 0
+    layer_size: 100
+    layer_x: 0
+    layer_y: 0
+    type: new_set
+    enabled: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775652341
+updated_at: 1778065370
 ---
 # Awesome Titles here
 > Great you will be young Jedi.

@@ -7,7 +7,7 @@
 	<title>First ever Story</title>
 
 	
-	
+	<link rel="preload" as="style" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js" /><link rel="stylesheet" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><script type="module" src="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js"></script><script type="module" src="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js"></script>
 
 	
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
@@ -34,11 +34,11 @@
 
 <body class="m-0 p-0 overflow-hidden">
 	<main id="story-container"
-    class="w-screen h-screen bg-white mt-0 pt-0 overflow-hidden">
+    class="w-full h-screen bg-white mt-0 pt-0 overflow-hidden">
     
     <div
         class="branch-container flex flex-nowrap gap-0 
-               horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-screen">
+               horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-full">
 
         
         
@@ -48,7 +48,7 @@
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -61,7 +61,7 @@
                         
                         
                         
-                        <img src="../assets/01-home-top-section.webp"
+                        <img src="../assets/first-tests/01-home-top-section.webp"
                             alt="First Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
@@ -75,20 +75,20 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 2; grid-area: 1 / 1; position: relative;">
 
 
                 
                 <div class="absolute"
-                    style="width: 49%; height: 49%; left: 36%; top: 13%;">
+                    style="width: 33%; height: 33%; left: 13%; top: 13%;">
 
                     
 
                         
                         
                         
-                        <img src="../assets/02-home-middle-section-boy-right.svg"
+                        <img src="../assets/first-tests/02-home-middle-section-boy-right.svg"
                             alt="First Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
@@ -102,13 +102,13 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 1; grid-area: 1 / 1; position: relative;">
 
 
                 
                 <div class="absolute"
-                    style="width: 100%; height: 100%; left: 28%; top: 0%;">
+                    style="width: 100%; height: 100%; left: 15%; top: 0%;">
 
                     
 
@@ -121,6 +121,7 @@
                                 <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
                                     <h1>Some additional Title</h1>
 <h2>And a sub</h2>
+<p>And some random commentary.</p>
 
                                 </div>
                             </div>
@@ -145,7 +146,7 @@
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -158,7 +159,7 @@
                         
                         
                         
-                        <img src="../assets/02-home-middle-section.webp"
+                        <img src="../assets/first-tests/02-home-middle-section.webp"
                             alt="Second Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
@@ -172,7 +173,7 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 1; grid-area: 1 / 1; position: relative;">
 
 
@@ -185,7 +186,7 @@
                         
                         
                         
-                        <img src="../assets/02-home-middle-section-girl-left.png"
+                        <img src="../assets/first-tests/02-home-middle-section-girl-left.png"
                             alt="Second Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
@@ -219,7 +220,7 @@
 
             
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -232,21 +233,12 @@
                         
                         
                         
-                        <img src="../assets/03-home-bottom-section.webp"
-                            alt="Third Tile"
+                        <img src="../assets/first-tests/03-home-bottom-section.webp"
+                            alt="Lottie Link Tile"
                             class="w-full pointer-events-auto max-w-none h-full object-contain">
                         
                         
 
-                        
-                        <div class="w-full h-full flex items-center justify-center p-8">
-                            <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
-                                <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
-                                    <p>More copy for the layer</p>
-
-                                </div>
-                            </div>
-                        </div>
                         
 
                         
@@ -255,7 +247,7 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
 
@@ -282,7 +274,7 @@
             </div>
 
             
-            <div class="object new_set w-full h-full pointer-events-none"
+            <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
                 style="z-index: 4; grid-area: 1 / 1; position: relative;">
 
 
@@ -368,12 +360,12 @@
     
 
     .tile {
-        width: auto !important;
+        /*width: auto !important;*/
         height: 100vh !important;
     }
 
     .tile img {
-        width: auto !important;
+        /*width: auto !important;*/
         height: 100% !important;
     }
 
