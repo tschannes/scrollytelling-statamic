@@ -1,0 +1,202 @@
+{{ if live_preview || (get:live-preview) || (get:live_preview) }}
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const layers = document.querySelectorAll('.live-preview-layer');
+        let activeLayer = null;
+        let isDragging = false;
+        let isResizing = false;
+        let startX, startY, startWidth, startMouseX, startMouseY;
+
+        layers.forEach(layer => {
+            try {
+                const textProse = layer.querySelector('.prose');
+                let innerTarget = layer.querySelector('img, dotlottie-player');
+                
+                if (!innerTarget && textProse) {
+                    const container = textProse.closest('.pointer-events-auto');
+                    innerTarget = container ? container : layer;
+                }
+                
+                if (!innerTarget) {
+                    innerTarget = layer;
+                }
+                
+                // Apply permanent outline
+                innerTarget.style.outline = '3px dashed rgba(79, 70, 229, 0.8)';
+                innerTarget.style.outlineOffset = '4px';
+
+                // Add a permanent resize handle
+                const resizeHandle = document.createElement('div');
+                resizeHandle.className = 'resize-handle';
+                resizeHandle.style.cssText = 'position:absolute; bottom:10px; right:10px; width:25px; height:25px; background:rgba(79, 70, 229, 0.9); border-radius:50%; border:3px solid white; box-shadow:0 0 8px rgba(0,0,0,0.4); cursor:nwse-resize; pointer-events:auto; z-index:9999; display:block; transition:transform 0.1s;';
+                
+                if (innerTarget.tagName.toLowerCase() === 'img' || innerTarget.tagName.toLowerCase() === 'dotlottie-player') {
+                    layer.appendChild(resizeHandle);
+                } else {
+                    innerTarget.style.position = 'relative';
+                    innerTarget.appendChild(resizeHandle);
+                }
+
+            // Resizing logic
+            resizeHandle.addEventListener('mousedown', (e) => {
+                isResizing = true;
+                activeLayer = layer;
+                startMouseX = e.clientX;
+                startMouseY = e.clientY;
+                startWidth = parseFloat(layer.style.width || 100);
+                resizeHandle.style.transform = 'scale(1.2)';
+                e.stopPropagation();
+                e.preventDefault();
+            });
+
+            // Drag logic: start dragging anywhere on the layer EXCEPT the text box or resize handle
+            layer.addEventListener('mousedown', (e) => {
+                if (e.target.closest('.resize-handle') || e.target.closest('.prose')) {
+                    return; // Don't drag if clicking resize handle or text
+                }
+                isDragging = true;
+                activeLayer = layer;
+                startMouseX = e.clientX;
+                startMouseY = e.clientY;
+                startX = parseFloat(layer.style.left || 0);
+                startY = parseFloat(layer.style.top || 0);
+                layer.style.cursor = 'grabbing';
+                e.preventDefault();
+            });
+
+            // Click-to-edit logic for text
+            const textElement = layer.querySelector('.prose');
+            if (textElement) {
+                const container = textElement.closest('.pointer-events-auto');
+                if (container) {
+                    container.style.cursor = 'text';
+                    
+                    // Single click to focus in sidebar
+                    container.addEventListener('click', (e) => {
+                        window.parent.postMessage({
+                            action: 'FOCUS_TEXT',
+                            tile: layer.closest('.tile') ? layer.closest('.tile').dataset.tile : null,
+                            layer: layer.dataset.layer
+                        }, '*');
+                        e.stopPropagation();
+                    });
+
+                    // Double click to edit right in the preview
+                    container.addEventListener('dblclick', (e) => {
+                        textElement.setAttribute('contenteditable', 'plaintext-only');
+                        textElement.focus();
+                        // Highlight it so they know it's editable
+                        textElement.style.outline = '2px solid rgba(79, 70, 229, 0.5)';
+                        e.stopPropagation();
+                    });
+
+                    // Sync continuously to prevent save race conditions
+                    textElement.addEventListener('input', () => {
+                        window.parent.postMessage({
+                            action: 'SYNC_TEXT',
+                            tile: layer.closest('.tile') ? layer.closest('.tile').dataset.tile : null,
+                            layer: layer.dataset.layer,
+                            text: textElement.innerText
+                        }, '*');
+                    });
+
+                    // Update UI in sidebar when they finish
+                    textElement.addEventListener('blur', () => {
+                        textElement.removeAttribute('contenteditable');
+                        textElement.style.outline = 'none';
+                        const textVal = textElement.innerText;
+
+                        window.parent.postMessage({
+                            action: 'UPDATE_TEXT',
+                            tile: layer.closest('.tile') ? layer.closest('.tile').dataset.tile : null,
+                            layer: layer.dataset.layer,
+                            text: textVal
+                        }, '*');
+
+                        // PERSISTENCE FIX: Save directly to the Tile entry!
+                        saveToTileEntry(layer, { text: textVal });
+                    });
+                }
+            }
+            } catch (err) {
+                console.error("Scrollytelling Live Preview Error on layer:", err);
+            }
+        });
+
+        // Disable actual link navigation in the preview iframe
+        document.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', e => e.preventDefault());
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (!activeLayer) return;
+
+            const parentRect = activeLayer.parentElement.getBoundingClientRect();
+
+            if (isDragging) {
+                const dx = ((e.clientX - startMouseX) / parentRect.width) * 100;
+                const dy = ((e.clientY - startMouseY) / parentRect.height) * 100;
+                activeLayer.style.left = `${startX + dx}%`;
+                activeLayer.style.top = `${startY + dy}%`;
+            } else if (isResizing) {
+                // Determine size change based on mouse movement relative to parent width
+                const dx = ((e.clientX - startMouseX) / parentRect.width) * 100;
+                const newSize = Math.max(5, startWidth + dx); // Cap at 5% min
+                activeLayer.style.width = `${newSize}%`;
+                activeLayer.style.height = `${newSize}%`;
+            }
+        });
+
+        const saveToTileEntry = (layerEl, updates) => {
+            const tileSection = layerEl.closest('.tile');
+            const tileId = tileSection ? tileSection.dataset.tileId : null;
+            if (!tileId) return;
+
+            const csrf = document.querySelector('meta[name="csrf-token"]')?.content;
+
+            fetch('/_scrollytelling/api/save-layer', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': csrf
+                },
+                body: JSON.stringify({
+                    tile_id: tileId,
+                    layer_index: layerEl.dataset.layer,
+                    updates: updates
+                })
+            }).catch(err => console.error("Error saving tile entry:", err));
+        };
+
+        document.addEventListener('mouseup', () => {
+            if (activeLayer && (isDragging || isResizing)) {
+                const updates = {
+                    x: parseFloat(activeLayer.style.left || 0),
+                    y: parseFloat(activeLayer.style.top || 0),
+                    size: parseFloat(activeLayer.style.width || 100)
+                };
+
+                // Send postMessage to CP
+                window.parent.postMessage({
+                    action: 'UPDATE_LAYER',
+                    tile: activeLayer.closest('.tile') ? activeLayer.closest('.tile').dataset.tile : null,
+                    layer: activeLayer.dataset.layer,
+                    ...updates
+                }, '*');
+
+                // PERSISTENCE FIX: If we are in a Story preview, save directly to the Tile entry!
+                saveToTileEntry(activeLayer, updates);
+
+                activeLayer.style.cursor = '';
+                const rh = activeLayer.querySelector('.resize-handle');
+                if(rh) {
+                    rh.style.transform = 'scale(1)';
+                }
+            }
+            isDragging = false;
+            isResizing = false;
+            activeLayer = null;
+        });
+    });
+</script>
+{{ /if }}

@@ -21,9 +21,9 @@ add_layers:
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0
-    layer_size: 55
-    layer_x: 25
-    layer_y: 0
+    layer_size: 141.203
+    layer_x: -21.0116
+    layer_y: -60.677
     type: new_set
     enabled: true
     layer_type: asset
@@ -31,8 +31,8 @@ add_layers:
     id: lHUmLBfjd1wuvXhljA2U2
     layer_z_index: 4
     layer_size: 31
-    layer_x: 60
-    layer_y: 44
+    layer_x: 60.462
+    layer_y: 44.9846
     type: new_set
     enabled: true
     layer_type: link

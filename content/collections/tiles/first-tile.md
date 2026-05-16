@@ -21,25 +21,22 @@ add_layers:
     layer_z_index: 2
     type: new_set
     enabled: true
-    layer_size: 33
-    layer_x: 13
-    layer_y: 13
+    layer_size: 73
+    layer_x: 42
+    layer_y: 1
     lottie_loop: true
     lottie_autoplay: true
     layer_type: asset
   -
     id: 7z-6EWN6K3GCVNPH3A855
     layer_type: text
-    layer_z_index: 1
-    layer_size: 100
-    layer_x: 15
-    layer_y: 0
+    layer_z_index: 3
+    layer_size: 110
+    layer_x: -25.8308
+    layer_y: -14.8769
     type: new_set
     enabled: true
-    layer_text: |-
-      # Some additional Title
-      ## And a sub
-      And some random commentary.
+    layer_text: '# Some NEWER Title'
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775808710
+updated_at: 1778925591
 ---

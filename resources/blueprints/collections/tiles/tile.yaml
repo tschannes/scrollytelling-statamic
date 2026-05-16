@@ -13,12 +13,6 @@ tabs:
               validate:
                 - required
           -
-            handle: content
-            field:
-              type: markdown
-              display: Content
-              localizable: true
-          -
             handle: add_layers
             field:
               type: replicator

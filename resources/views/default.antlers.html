@@ -11,7 +11,8 @@
                 style="z-index: {{ layer_z_index or 0 }}; grid-area: 1 / 1; position: relative;">
 
                 {{# Inner wrapper that handles positioning and sizing #}}
-                <div class="{{ if first }}relative{{ else }}absolute{{ /if }}"
+                <div class="live-preview-layer {{ if first }}relative{{ else }}absolute{{ /if }}"
+                    data-layer="{{ index }}"
                     style="width: {{ layer_size or 100 }}%; height: {{ layer_size or 100 }}%; left: {{ layer_x or 0 }}%; top: {{ layer_y or 0 }}%;">
 
                     {{# Open Link Wrapper if present #}}
@@ -76,3 +77,5 @@
 
     </div>
 </main>
+
+{{ partial:partials/live_preview_js }}

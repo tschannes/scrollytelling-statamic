@@ -1,6 +1,7 @@
 <main id="story-container"
     class="w-full h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden scroll-smooth{{ else }}overflow-hidden{{ /if }}">
     {{# The horizontal-scroll class triggers the wheel-to-scroll JS in layout.antlers.html #}}
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <div
         class="branch-container flex flex-nowrap gap-0 
                {{ if is_vertical }}flex-col w-full h-auto{{ else }}horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-full{{ /if }}">
@@ -8,6 +9,8 @@
         {{# Loop through the Tiles selected for this Story #}}
         {{ add_tiles }}
         <section
+            data-tile="{{ index }}"
+            data-tile-id="{{ id }}"
             class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 {{ if is_vertical }}w-full h-auto{{ else }}w-auto min-w-0 h-screen{{ /if }}">
 
 
@@ -18,7 +21,8 @@
 
 
                 {{# Inner wrapper using safer 'or' syntax for compatibility #}}
-                <div class="{{ if first }}relative{{ else }}absolute{{ /if }}"
+                <div class="live-preview-layer {{ if first }}relative{{ else }}absolute{{ /if }}"
+                    data-layer="{{ index }}"
                     style="width: {{ layer_size or 100 }}%; height: {{ layer_size or 100 }}%; left: {{ layer_x or 0 }}%; top: {{ layer_y or 0 }}%;">
 
                     {{ if link_to_branch }}
@@ -49,7 +53,7 @@
                         <div class="w-full h-full flex items-center justify-center p-8">
                             <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
                                 <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
-                                    {{ layer_text or content }}
+                                    {{ layer_text | markdown }}
                                 </div>
                             </div>
                         </div>
@@ -63,7 +67,7 @@
             </div>
 
             {{ /add_layers }}
-
+<!--
             {{# Tile content fallback #}}
             {{ if content }}
             <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
@@ -73,6 +77,7 @@
                 </div>
             </div>
             {{ /if }}
+             -->
 
         </section>
         {{ /add_tiles }}
@@ -165,3 +170,5 @@
 
     {{ /if }}
 </style>
+
+{{ partial:partials/live_preview_js }}

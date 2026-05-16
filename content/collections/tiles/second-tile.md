@@ -25,9 +25,9 @@ add_layers:
     enabled: true
     layer_width: 20
     layer_height: 20
-    layer_x: 9
-    layer_y: 6
-    layer_size: 26
+    layer_x: -13.3176
+    layer_y: -23.0456
+    layer_size: 119.373
     layer_type: asset
     lottie_loop: true
     lottie_autoplay: true

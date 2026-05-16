@@ -40,15 +40,7 @@ fields:
   -
     handle: layer_text
     field:
-      buttons:
-        - bold
-        - italic
-        - unorderedlist
-        - orderedlist
-        - quote
-        - link
-        - code
-      type: markdown
+      type: textarea
       display: 'Layer Text'
       show_when:
         layer_type: text
