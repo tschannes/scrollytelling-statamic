@@ -2,3 +2,4 @@
 @plugin "@tailwindcss/typography";
 @source "../views";
 @source "../../content";
+@import "./tile-scale.css";

@@ -1,0 +1,11 @@
+/* resources/css/tile-scale.css */
+/*
+  Responsive font sizing for text layers.
+  - Minimum font size: 0.75rem
+  - Maximum font size: 2rem
+  - Scale based on viewport height (2vh) for uniform behavior.
+  - Uses clamp to ensure readability.
+*/
+.live-preview-layer .prose {
+  font-size: clamp(0.75rem, 2vh, 2rem);
+}
