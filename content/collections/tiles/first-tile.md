@@ -22,8 +22,8 @@ add_layers:
     type: new_set
     enabled: true
     layer_size: 73
-    layer_x: 42
-    layer_y: 1
+    layer_x: 3.35114
+    layer_y: 56.4595
     lottie_loop: true
     lottie_autoplay: true
     layer_type: asset
@@ -31,9 +31,9 @@ add_layers:
     id: 7z-6EWN6K3GCVNPH3A855
     layer_type: text
     layer_z_index: 3
-    layer_size: 110
-    layer_x: -25.8308
-    layer_y: -14.8769
+    layer_size: 112.887
+    layer_x: -12.5158
+    layer_y: -33.8086
     type: new_set
     enabled: true
     layer_text: '# Some NEWER Title'

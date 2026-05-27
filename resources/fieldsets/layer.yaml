@@ -18,7 +18,7 @@ fields:
       max_files: 1
       type: assets
       display: 'Layer Media'
-      instructions: 'Upload an image or a Lottie .json file.'
+      instructions: 'Upload an image, video, or a Lottie .json file.'
       show_when:
         layer_type: asset
   -
@@ -27,16 +27,18 @@ fields:
       default: true
       type: toggle
       display: 'Loop Animation'
-      show_when:
+      if:
         layer_type: asset
+        layer_asset: 'custom isPlayableAnimationAsset'
   -
     handle: lottie_autoplay
     field:
       default: true
       type: toggle
       display: 'Autoplay'
-      show_when:
+      if:
         layer_type: asset
+        layer_asset: 'custom isPlayableAnimationAsset'
   -
     handle: layer_text
     field:

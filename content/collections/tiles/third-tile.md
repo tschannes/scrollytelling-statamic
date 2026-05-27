@@ -22,17 +22,17 @@ add_layers:
     lottie_autoplay: true
     layer_z_index: 0
     layer_size: 141.203
-    layer_x: -21.0116
-    layer_y: -60.677
+    layer_x: -22.6038
+    layer_y: -62.0124
     type: new_set
     enabled: true
     layer_type: asset
   -
     id: lHUmLBfjd1wuvXhljA2U2
     layer_z_index: 4
-    layer_size: 31
-    layer_x: 60.462
-    layer_y: 44.9846
+    layer_size: 19.9136
+    layer_x: 65.1796
+    layer_y: 49.9335
     type: new_set
     enabled: true
     layer_type: link

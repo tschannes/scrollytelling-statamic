@@ -25,13 +25,13 @@ add_layers:
     enabled: true
     layer_width: 20
     layer_height: 20
-    layer_x: -13.3176
-    layer_y: -23.0456
-    layer_size: 119.373
+    layer_x: -33.3195
+    layer_y: -31.4839
+    layer_size: 112.307
     layer_type: asset
     lottie_loop: true
     lottie_autoplay: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775654849
+updated_at: 1779803118
 ---
 Some Content for Tile Number 2.

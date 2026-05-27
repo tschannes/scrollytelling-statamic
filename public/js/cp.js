@@ -148,3 +148,40 @@ window.addEventListener('message', ({ data }) => {
             break;
     }
 });
+
+// 5. Custom Conditions
+if (window.Statamic && window.Statamic.$conditions) {
+    window.Statamic.$conditions.add('isPlayableAnimationAsset', ({ target, values, params }) => {
+        console.log('isPlayableAnimationAsset condition evaluated!', { target, values, params });
+        if (!target) {
+            console.log('isPlayableAnimationAsset: target is falsy');
+            return false;
+        }
+        const assets = Array.isArray(target) ? target : [target];
+        if (assets.length === 0) {
+            console.log('isPlayableAnimationAsset: assets array is empty');
+            return false;
+        }
+
+        const allowedExtensions = ['mp4', 'webm', 'mov', 'm4v', 'ogg', 'ogv', 'gif', 'json', 'lottie'];
+        const result = assets.some(asset => {
+            let path = '';
+            if (typeof asset === 'string') {
+                path = asset;
+            } else if (asset && typeof asset === 'object' && typeof asset.path === 'string') {
+                path = asset.path;
+            } else if (asset && typeof asset === 'object' && typeof asset.id === 'string') {
+                path = asset.id;
+            } else {
+                return false;
+            }
+            const ext = path.split('?')[0].split('#')[0].split('.').pop().toLowerCase();
+            const allowed = allowedExtensions.includes(ext);
+            console.log(`Checking asset: ${path}, ext: ${ext}, allowed: ${allowed}`);
+            return allowed;
+        });
+        console.log('isPlayableAnimationAsset result:', result);
+        return result;
+    });
+}
+

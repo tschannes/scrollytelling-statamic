@@ -20,3 +20,13 @@ Route::middleware(['web', 'statamic.cp', 'statamic.cp.authenticated'])
         Route::delete('/delete/{file}', [\App\Http\Controllers\CP\SSGUtilityController::class, 'delete'])->name('delete');
     });
 
+Route::get('/dev-login', function () {
+    $user = \Statamic\Facades\User::findByEmail('hannes.tscherrig@ffhs.ch') ?: \Statamic\Facades\User::all()->first();
+    if ($user) {
+        \Illuminate\Support\Facades\Auth::login($user);
+        return redirect('/cp');
+    }
+    return 'No user found';
+});
+
+

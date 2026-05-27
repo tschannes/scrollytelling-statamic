@@ -27,7 +27,7 @@
                         {{ /if }}
 
 
-                        {{# Unified Asset Handling: Detect if it's a Lottie (JSON/dotLottie) or Image #}}
+                        {{# Unified Asset Handling: Detect if it's a Lottie (JSON/dotLottie), Video, or Image #}}
                         {{ if layer_asset }}
                         {{ if (layer_asset:extension == 'json') || (layer_asset:extension == 'lottie') }}
 
@@ -35,6 +35,9 @@
                             style="width: 100%; height: 100%;" {{ if lottie_loop }}loop{{ /if }} {{ if lottie_autoplay
                             }}autoplay{{ /if }} class="pointer-events-auto">
                         </dotlottie-player>
+
+                        {{ elseif layer_asset:is_video }}
+                        <video src="{{ layer_asset:url }}" class="w-full pointer-events-auto max-w-none h-full object-contain" {{ if lottie_loop }}loop{{ /if }} {{ if lottie_autoplay }}autoplay playsinline muted{{ /if }}></video>
 
                         {{ else }}
                         <img src="{{ layer_image:url or layer_asset:url }}" alt="{{ title }}"
