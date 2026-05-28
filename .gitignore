@@ -21,6 +21,7 @@ op*.log
 /public/assets
 /storage/*.key
 /storage/pail
+/static/assets
 /vendor
 Homestead.json
 Homestead.yaml
