@@ -20,11 +20,11 @@ add_layers:
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 1
-    layer_size: 100.114
-    layer_x: 0.20764
-    layer_y: -0.205334
+    layer_size: 100
+    layer_x: 0
+    layer_y: 0
     type: new_set
     enabled: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1779867019
+updated_at: 1779875796
 ---

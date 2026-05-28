@@ -1,0 +1,66 @@
+{{# Media playback controls – always active on the public frontend #}}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.layer-media-wrapper').forEach(wrapper => {
+        const video  = wrapper.querySelector('video');
+        const lottie = wrapper.querySelector('dotlottie-player');
+        const overlay = wrapper.querySelector('.media-overlay');
+        if (!overlay) return;
+
+        const isAutoplay = wrapper.dataset.autoplay === 'true';
+        const isLoop     = wrapper.dataset.loop === 'true';
+        const media      = video || lottie;
+        if (!media) return;
+
+        /* ── helpers ── */
+        const hide = () => overlay.classList.add('hidden');
+        const show = (state) => {
+            overlay.dataset.state = state;
+            overlay.textContent = state === 'replay' ? '↺' : '▶︎';
+            overlay.setAttribute('aria-label', state === 'replay' ? 'Replay' : 'Play');
+            overlay.classList.remove('hidden');
+        };
+
+        /* ── 1. Initial state ── */
+        if (!isAutoplay) {
+            show('play');
+            if (video) { video.pause(); }
+            if (lottie) { lottie.pause(); }
+        } else {
+            hide();
+        }
+
+        /* ── 2. Click handler ── */
+        overlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+
+            if (video) {
+                if (video.ended) {
+                    video.currentTime = 0;
+                }
+                video.play();
+                hide();
+            }
+
+            if (lottie) {
+                lottie.play();
+                hide();
+            }
+        });
+
+        /* ── 3. Ended / complete → show replay if loop is off ── */
+        if (video) {
+            video.addEventListener('ended', () => {
+                if (!isLoop) show('replay');
+            });
+        }
+
+        if (lottie) {
+            lottie.addEventListener('complete', () => {
+                if (!isLoop) show('replay');
+            });
+        }
+    });
+});
+</script>

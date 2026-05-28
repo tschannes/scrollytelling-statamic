@@ -16,10 +16,10 @@ tabs:
             handle: add_layers
             field:
               type: replicator
-              display: 'Add Layers'
+              display: 'Layers'
               sets:
                 new_set_group:
-                  display: 'New Set Group'
+                  display: 'New Set Group' 
                   sets:
                     new_set:
                       display: 'New Set'

@@ -9,3 +9,42 @@
 .live-preview-layer .prose {
   font-size: clamp(0.75rem, 2vh, 2rem);
 }
+
+/* ── Media playback overlay ── */
+/*
+.layer-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.media-overlay {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 1.6rem;
+  line-height: 4rem;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  pointer-events: auto;
+  z-index: 10;
+  transition: opacity 0.25s ease, transform 0.2s ease;
+}
+
+.media-overlay:hover {
+  background: rgba(0, 0, 0, 0.65);
+  transform: scale(1.1);
+}
+
+.media-overlay.hidden {
+  display: none;
+}
+*/

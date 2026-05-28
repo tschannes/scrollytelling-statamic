@@ -14,17 +14,16 @@ add_layers:
     layer_y: 0
     type: new_set
     enabled: true
+    layer_type: asset
   -
     id: xo9ttJw3UaRAEGwaQeBKb
-    link_to_branch: d506fee3-af48-4448-aede-d9282f3ea2b7
-    lottie_loop: true
-    lottie_autoplay: true
     layer_z_index: 0
     layer_size: 32
     layer_x: 38
     layer_y: 40
     type: new_set
     enabled: true
+    layer_type: asset
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775651951
+updated_at: 1779953619
 ---
