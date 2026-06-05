@@ -39,4 +39,5 @@ parallax_pin: true
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: false
+parent_parallax: false
 ---

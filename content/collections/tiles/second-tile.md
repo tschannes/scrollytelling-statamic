@@ -33,5 +33,6 @@ parallax_pin: false
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: true
+parent_parallax: false
 ---
 Some Content for Tile Number 2.

@@ -29,4 +29,5 @@ add_layers:
     enabled: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
 updated_at: 1775735982
+parent_parallax: false
 ---

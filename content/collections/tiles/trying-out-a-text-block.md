@@ -17,6 +17,7 @@ add_layers:
     layer_y: 0
     type: new_set
     enabled: true
+parent_parallax: false
 ---
 # Uno credas gemino peremit
 

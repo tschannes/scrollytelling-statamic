@@ -5,6 +5,9 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Statamic\Facades\CP\Nav;
 use Statamic\Statamic;
+use Statamic\Facades\Entry;
+use Statamic\Events\EntrySaved;
+use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,40 +35,13 @@ class AppServiceProvider extends ServiceProvider
 
         Statamic::externalScript('/js/cp.js?v=' . @filemtime(public_path('js/cp.js')));
 
-        // API route to check if a Tile belongs to a Story with Parallax enabled
-        \Illuminate\Support\Facades\Route::get('/_scrollytelling/api/story-parallax', function (\Illuminate\Http\Request $request) {
-            $tileId = $request->query('tile');
-            $storySlug = $request->query('story');
-
-            if ($storySlug) {
-                $story = \Statamic\Facades\Entry::findBySlug($storySlug, 'stories');
-                if ($story && $story->get('parallax') === true) {
-                    return response()->json(['parallax' => true]);
-                }
+        // Event listener to sync parent story parallax status to linked tiles
+        Event::listen(EntrySaved::class, function (EntrySaved $event) {
+            $entry = $event->entry;
+            if ($entry->collectionHandle() === 'stories') {
+                $this->updateAllTilesParallaxStatus();
             }
-
-            if ($tileId) {
-                $stories = \Statamic\Facades\Entry::whereCollection('stories');
-                foreach ($stories as $story) {
-                    $tiles = $story->get('add_tiles');
-                    $tileIds = [];
-                    if ($tiles instanceof \Statamic\Entries\EntryCollection) {
-                        $tileIds = $tiles->pluck('id')->all();
-                    } elseif (is_array($tiles)) {
-                        $tileIds = array_map(function($t) {
-                            return is_object($t) ? $t->id : (string)$t;
-                        }, $tiles);
-                    }
-                    if (in_array($tileId, $tileIds)) {
-                        if ($story->get('parallax') === true) {
-                            return response()->json(['parallax' => true]);
-                        }
-                    }
-                }
-            }
-
-            return response()->json(['parallax' => false]);
-        })->middleware('web');
+        });
 
         // Add a direct API route for visual editing within Story previews
         \Illuminate\Support\Facades\Route::post('/_scrollytelling/api/save-layer', function (\Illuminate\Http\Request $request) {
@@ -87,5 +63,42 @@ class AppServiceProvider extends ServiceProvider
             }
             return response()->json(['success' => true]);
         })->middleware('web'); // Use web for session/auth if needed, or bypass if safe
+    }
+
+    /**
+     * Recalculates and updates the parent_parallax field on all Tiles
+     * based on whether they are linked in any parallax-enabled Story.
+     */
+    protected function updateAllTilesParallaxStatus(): void
+    {
+        // 1. Gather IDs of all tiles that belong to a story with parallax enabled
+        $parallaxTileIds = [];
+        $stories = Entry::whereCollection('stories');
+        foreach ($stories as $story) {
+            if ($story->get('parallax') === true) {
+                $tiles = $story->get('add_tiles');
+                $tilesList = [];
+                if ($tiles instanceof \Statamic\Entries\EntryCollection) {
+                    $tilesList = $tiles->pluck('id')->all();
+                } elseif (is_array($tiles)) {
+                    $tilesList = array_map(function($t) {
+                        return is_object($t) ? $t->id : (string)$t;
+                    }, $tiles);
+                }
+                foreach ($tilesList as $tId) {
+                    $parallaxTileIds[$tId] = true;
+                }
+            }
+        }
+
+        // 2. Update parent_parallax on all tiles
+        $tiles = Entry::whereCollection('tiles');
+        foreach ($tiles as $tile) {
+            $shouldBeParallax = isset($parallaxTileIds[$tile->id()]);
+            if ($tile->get('parent_parallax') !== $shouldBeParallax) {
+                $tile->set('parent_parallax', $shouldBeParallax);
+                $tile->saveQuietly();
+            }
+        }
     }
 }
