@@ -12,8 +12,6 @@ add_layers:
     layer_x: 0
     layer_y: 0
     layer_type: asset
-    lottie_loop: true
-    lottie_autoplay: true
     layer_asset: first-tests/01-home-top-section.webp
   -
     id: tKgljTILWwkCrndWxnK6X
@@ -22,21 +20,23 @@ add_layers:
     type: new_set
     enabled: true
     layer_size: 73
-    layer_x: 3.35114
-    layer_y: 56.4595
-    lottie_loop: true
-    lottie_autoplay: true
+    layer_x: 3
+    layer_y: 56
     layer_type: asset
   -
     id: 7z-6EWN6K3GCVNPH3A855
     layer_type: text
     layer_z_index: 3
-    layer_size: 112.887
-    layer_x: -12.5158
-    layer_y: -33.8086
+    layer_size: 112
+    layer_x: -12
+    layer_y: -33
     type: new_set
     enabled: true
     layer_text: '# Some NEWER Title'
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1778925591
+updated_at: 1780664121
+parallax_pin: true
+parallax_speed: 1.0
+parallax_scale: false
+parallax_fade: false
 ---

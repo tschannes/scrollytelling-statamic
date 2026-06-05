@@ -16,10 +16,10 @@ tabs:
             handle: add_layers
             field:
               type: replicator
-              display: 'Layers'
+              display: Layers
               sets:
                 new_set_group:
-                  display: 'New Set Group' 
+                  display: 'New Set Group'
                   sets:
                     new_set:
                       display: 'New Set'
@@ -37,3 +37,37 @@ tabs:
               type: slug
               localizable: true
               validate: 'max:200'
+          -
+            handle: parallax_pin
+            field:
+              type: toggle
+              display: 'Pin Tile'
+              instructions: 'Keep this tile pinned while subsequent tiles scroll over it.'
+              default: true
+              if:
+                parallax_pin: 'custom isStoryParallaxActive'
+          -
+            handle: parallax_speed
+            field:
+              type: float
+              display: 'Parallax Speed'
+              instructions: 'Scroll speed multiplier (e.g., 0.5 for slower, 1.5 for faster).'
+              default: 1
+              if:
+                parallax_speed: 'custom isStoryParallaxActive'
+          -
+            handle: parallax_scale
+            field:
+              type: toggle
+              display: 'Scale on Stacking'
+              instructions: 'Scale down this tile as the next tile scrolls over it.'
+              if:
+                parallax_scale: 'custom isStoryParallaxActive'
+          -
+            handle: parallax_fade
+            field:
+              type: toggle
+              display: 'Fade on Stacking'
+              instructions: 'Fade out this tile as the next tile scrolls over it.'
+              if:
+                parallax_fade: 'custom isStoryParallaxActive'

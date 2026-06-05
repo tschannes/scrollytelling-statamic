@@ -1,5 +1,5 @@
 <main id="story-container"
-    class="w-full h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden scroll-smooth{{ else }}overflow-hidden{{ /if }}">
+    class="w-full h-screen bg-white mt-0 pt-0 {{ if is_vertical }}overflow-y-auto overflow-x-hidden {{ unless parallax }}scroll-smooth{{ /unless }}{{ else }}overflow-hidden{{ /if }}">
     {{# The horizontal-scroll class triggers the wheel-to-scroll JS in layout.antlers.html #}}
     <meta name="csrf-token" content="{{ csrf_token }}">
     <div
@@ -11,6 +11,12 @@
         <section
             data-tile="{{ index }}"
             data-tile-id="{{ id }}"
+            {{ if parallax }}
+            data-parallax-pin="{{ parallax_pin ?? true ? 'true' : 'false' }}"
+            data-parallax-speed="{{ parallax_speed ?? 1.0 }}"
+            data-parallax-fade="{{ parallax_fade ?? false ? 'true' : 'false' }}"
+            data-parallax-scale="{{ parallax_scale ?? false ? 'true' : 'false' }}"
+            {{ /if }}
             class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 {{ if is_vertical }}w-full h-auto{{ else }}w-auto min-w-0 h-screen{{ /if }}">
 
 
@@ -174,3 +180,101 @@
 </style>
 
 {{ partial:partials/live_preview_js }}
+
+{{ if parallax }}
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    (() => {
+        const initParallax = () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const isVertical = {{ is_vertical ? 'true' : 'false' }};
+            const scroller = isVertical ? "#story-container" : ".branch-container";
+            const tiles = gsap.utils.toArray(".tile");
+
+            tiles.forEach((tile, index) => {
+                const isPin = tile.getAttribute("data-parallax-pin") === "true";
+                const speed = parseFloat(tile.getAttribute("data-parallax-speed")) || 1.0;
+
+                // 1. Stacking/Pinning Effect
+                if (isPin && index < tiles.length - 1) {
+                    ScrollTrigger.create({
+                        trigger: tile,
+                        scroller: scroller,
+                        start: isVertical ? "top top" : "left left",
+                        end: isVertical ? "bottom top" : "right left",
+                        pin: true,
+                        pinSpacing: false,
+                        horizontal: !isVertical,
+                        invalidateOnRefresh: true
+                    });
+                }
+
+                // 2. Parallax Speed (if speed is not 1.0)
+                if (speed !== 1.0) {
+                    const yVal = (1 - speed) * 100;
+                    const layers = tile.querySelectorAll(".object");
+                    if (layers.length > 0) {
+                        gsap.fromTo(layers, {
+                            y: isVertical ? `${yVal}vh` : 0,
+                            x: !isVertical ? `${yVal}vw` : 0
+                        }, {
+                            y: isVertical ? `${-yVal}vh` : 0,
+                            x: !isVertical ? `${-yVal}vw` : 0,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: tile,
+                                scroller: scroller,
+                                start: isVertical ? "top bottom" : "left right",
+                                end: isVertical ? "bottom top" : "right left",
+                                horizontal: !isVertical,
+                                scrub: true
+                            }
+                        });
+                    }
+                }
+
+                // 3. Fade / Scale Stacking Effects
+                const nextTile = tiles[index + 1];
+                if (nextTile) {
+                    const fade = tile.getAttribute("data-parallax-fade") === "true";
+                    const scale = tile.getAttribute("data-parallax-scale") === "true";
+
+                    if (fade || scale) {
+                        const animProps = {};
+                        if (fade) animProps.opacity = 0.1;
+                        if (scale) {
+                            animProps.scale = 0.85;
+                            animProps.transformOrigin = isVertical ? "center bottom" : "right center";
+                        }
+
+                        const layers = tile.querySelectorAll(".object");
+                        if (layers.length > 0) {
+                            gsap.to(layers, {
+                                ...animProps,
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: nextTile,
+                                    scroller: scroller,
+                                    start: isVertical ? "top bottom" : "left right",
+                                    end: isVertical ? "top top" : "left left",
+                                    horizontal: !isVertical,
+                                    scrub: true
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initParallax);
+        } else {
+            initParallax();
+        }
+    })();
+</script>
+{{ /if }}

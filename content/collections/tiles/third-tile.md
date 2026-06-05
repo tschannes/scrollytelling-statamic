@@ -9,8 +9,6 @@ add_layers:
     layer_z_index: 0
     type: new_set
     enabled: true
-    lottie_loop: true
-    lottie_autoplay: true
     layer_size: 100
     layer_x: 0
     layer_y: 0
@@ -21,23 +19,27 @@ add_layers:
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0
-    layer_size: 141.203
-    layer_x: -22.6038
-    layer_y: -62.0124
+    layer_size: 141
+    layer_x: -22
+    layer_y: -62
     type: new_set
     enabled: true
     layer_type: asset
   -
     id: lHUmLBfjd1wuvXhljA2U2
     layer_z_index: 4
-    layer_size: 19.9136
-    layer_x: 65.1796
-    layer_y: 49.9335
+    layer_size: 19
+    layer_x: 65
+    layer_y: 49
     type: new_set
     enabled: true
     layer_type: link
     link_to_branch: fb71329d-770e-4d5b-b756-c59b40fbc6e4
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775808609
+updated_at: 1780664167
+parallax_pin: true
+parallax_speed: 0.0
+parallax_scale: false
+parallax_fade: false
 ---
 Demo Content

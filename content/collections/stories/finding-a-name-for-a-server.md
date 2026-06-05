@@ -9,5 +9,6 @@ add_tiles:
   - 6522a39d-55ce-4d7f-8798-9c856babefc5
 is_vertical: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1778916651
+updated_at: 1780395066
+parallax: false
 ---

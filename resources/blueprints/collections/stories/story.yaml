@@ -37,3 +37,10 @@ tabs:
               display: 'Vertical Scrolling'
               instructions: 'Toggle between horizontal and vertical scrolling mode.'
               default: false
+          -
+            handle: parallax
+            field:
+              type: toggle
+              display: 'Parallax Stacking'
+              instructions: 'Enable GSAP ScrollTrigger stacking and parallax effects.'
+              default: false

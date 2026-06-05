@@ -13,10 +13,8 @@ add_layers:
     layer_height: 100
     layer_x: 0
     layer_y: 0
-    layer_size: 100
+    layer_size: 91
     layer_type: asset
-    lottie_loop: true
-    lottie_autoplay: true
   -
     id: ST416MFPX0WCD_l1xJ3Jg
     layer_asset: first-tests/02-home-middle-section-girl-left.png
@@ -25,13 +23,15 @@ add_layers:
     enabled: true
     layer_width: 20
     layer_height: 20
-    layer_x: -33.3195
-    layer_y: -31.4839
-    layer_size: 112.307
+    layer_x: -33
+    layer_y: -31
+    layer_size: 112
     layer_type: asset
-    lottie_loop: true
-    lottie_autoplay: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1779803118
+updated_at: 1780664227
+parallax_pin: false
+parallax_speed: 1.0
+parallax_scale: false
+parallax_fade: true
 ---
 Some Content for Tile Number 2.
