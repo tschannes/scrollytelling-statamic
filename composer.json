@@ -14,7 +14,7 @@
         "laravel/framework": "^13.0",
         "laravel/tinker": "^3.0",
         "spatie/fork": "^1.2",
-        "statamic/cms": "^6.0",
+        "statamic/cms": "6.20.3",
         "statamic/ssg": "^4.1"
     },
     "require-dev": {
