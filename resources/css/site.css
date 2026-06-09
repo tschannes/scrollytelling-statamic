@@ -1,5 +1,16 @@
+@import url("https://use.typekit.net/mmh1xmw.css");
 @import "tailwindcss";
+
+@theme {
+  --font-sans: "aktiv-grotesk", sans-serif;
+}
+
+html {
+  font-family: var(--font-sans);
+}
+
 @plugin "@tailwindcss/typography";
 @source "../views";
 @source "../../content";
 @import "./tile-scale.css";
+

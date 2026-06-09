@@ -11,9 +11,9 @@ add_layers:
     enabled: true
     layer_width: 100
     layer_height: 100
-    layer_x: 0
-    layer_y: 0
-    layer_size: 91
+    layer_x: -13.927
+    layer_y: -10.5985
+    layer_size: 114.135
     layer_type: asset
   -
     id: ST416MFPX0WCD_l1xJ3Jg
@@ -33,6 +33,6 @@ parallax_pin: false
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: true
-parent_parallax: false
+parent_parallax: true
 ---
 Some Content for Tile Number 2.

@@ -20,8 +20,8 @@ add_layers:
     lottie_autoplay: true
     layer_z_index: 0
     layer_size: 141
-    layer_x: -22
-    layer_y: -62
+    layer_x: -29.4303
+    layer_y: -45.9749
     type: new_set
     enabled: true
     layer_type: asset
@@ -41,6 +41,6 @@ parallax_pin: true
 parallax_speed: 0.0
 parallax_scale: false
 parallax_fade: false
-parent_parallax: false
+parent_parallax: true
 ---
 Demo Content

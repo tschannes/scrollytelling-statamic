@@ -28,8 +28,8 @@ add_layers:
     layer_type: text
     layer_z_index: 3
     layer_size: 112
-    layer_x: -12
-    layer_y: -33
+    layer_x: -16.89
+    layer_y: -27.3441
     type: new_set
     enabled: true
     layer_text: '# Some NEWER Title'
@@ -39,5 +39,5 @@ parallax_pin: true
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: false
-parent_parallax: false
+parent_parallax: true
 ---

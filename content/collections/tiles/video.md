@@ -8,7 +8,7 @@ add_layers:
     layer_type: asset
     layer_asset: first-tests/02-home-middle-section.webp
     layer_z_index: 0
-    layer_size: 100
+    layer_size: 75.4311
     layer_x: 0
     layer_y: 0
     type: new_set
@@ -20,12 +20,12 @@ add_layers:
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 1
-    layer_size: 100
+    layer_size: 100.048
     layer_x: 0
     layer_y: 0
     type: new_set
     enabled: true
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
 updated_at: 1779875796
-parent_parallax: false
+parent_parallax: true
 ---

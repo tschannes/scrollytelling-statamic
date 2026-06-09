@@ -7,9 +7,6 @@
 	<title>First Paragliding Tile</title>
 
 	
-	<link rel="preload" as="style" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js" /><link rel="stylesheet" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><script type="module" src="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js"></script><script type="module" src="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js"></script>
-
-	
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
 
@@ -17,18 +14,8 @@
 	<link rel="icon" type="image/x-icon" href="../../favicon.ico">
 	<script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3"></script>
 
-	<link rel="stylesheet" href="../../build/assets/jquery-ui-CaUesXpy.css">
-	<link rel="stylesheet" href="../../build/assets/mmh1xmw-6z2rm5lq.css">
-	<link rel="stylesheet" href="../../build/assets/site-K3BrQlGi.css">
-	<link rel="stylesheet" href="../../build/assets/style-BbyUD8Jw.css">
-	<link rel="stylesheet" href="../../build/assets/viewer-DLW-EvGW.css">
-	<script type="module" src="../../build/assets/jquery-3.6.0.min-DQVDBd0E.js"></script>
-	<script type="module" src="../../build/assets/jquery-ui-CrBkTqTu.js"></script>
+	<link rel="stylesheet" href="../../build/assets/site-CjHbFU9F.css">
 	<script type="module" src="../../build/assets/lottie.min-CHTNzAdv.js"></script>
-	<script type="module" src="../../build/assets/scr-actions-Da-6faUE.js"></script>
-	<script type="module" src="../../build/assets/scr-delete-l0sNRNKZ.js"></script>
-	<script type="module" src="../../build/assets/scr-display-C_sVqv-E.js"></script>
-	<script type="module" src="../../build/assets/scr-send-l0sNRNKZ.js"></script>
 	<script type="module" src="../../build/assets/site-l0sNRNKZ.js"></script>
 </head>
 
@@ -46,7 +33,8 @@
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
                 
-                <div class="relative"
+                <div class="live-preview-layer relative"
+                    data-layer="0"
                     style="width: 50%; height: 50%; left: 0%; top: 0%;">
 
                     
@@ -74,7 +62,8 @@
                 style="z-index: 0; grid-area: 1 / 1; position: relative;">
 
                 
-                <div class="absolute"
+                <div class="live-preview-layer absolute"
+                    data-layer="1"
                     style="width: 100%; height: 100%; left: 0%; top: 0%;">
 
                     
@@ -91,11 +80,8 @@
                             <div
                                 class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
                                 <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
-                                    <h1>Awesome Titles here</h1>
-<blockquote>
-<p>Great you will be young Jedi.</p>
-</blockquote>
-
+                                    # Awesome Titles here
+> Great you will be young Jedi.
                                 </div>
                             </div>
                         </div>
@@ -114,6 +100,75 @@
 
     </div>
 </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.layer-media-wrapper').forEach(wrapper => {
+        const video  = wrapper.querySelector('video');
+        const lottie = wrapper.querySelector('dotlottie-player');
+        const overlay = wrapper.querySelector('.media-overlay');
+        if (!overlay) return;
+
+        const isAutoplay = wrapper.dataset.autoplay === 'true';
+        const isLoop     = wrapper.dataset.loop === 'true';
+        const media      = video || lottie;
+        if (!media) return;
+
+        /* ── helpers ── */
+        const hide = () => overlay.classList.add('hidden');
+        const show = (state) => {
+            overlay.dataset.state = state;
+            overlay.textContent = state === 'replay' ? '↺' : '▶︎';
+            overlay.setAttribute('aria-label', state === 'replay' ? 'Replay' : 'Play');
+            overlay.classList.remove('hidden');
+        };
+
+        /* ── 1. Initial state ── */
+        if (!isAutoplay) {
+            show('play');
+            if (video) { video.pause(); }
+            if (lottie) { lottie.pause(); }
+        } else {
+            hide();
+        }
+
+        /* ── 2. Click handler ── */
+        overlay.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+
+            if (video) {
+                if (video.ended) {
+                    video.currentTime = 0;
+                }
+                video.play();
+                hide();
+            }
+
+            if (lottie) {
+                lottie.play();
+                hide();
+            }
+        });
+
+        /* ── 3. Ended / complete → show replay if loop is off ── */
+        if (video) {
+            video.addEventListener('ended', () => {
+                if (!isLoop) show('replay');
+            });
+        }
+
+        if (lottie) {
+            lottie.addEventListener('complete', () => {
+                if (!isLoop) show('replay');
+            });
+        }
+    });
+});
+</script>
+
+
+
 
 
 	<script>

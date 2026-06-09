@@ -7,9 +7,6 @@
 	<title>First ever Story</title>
 
 	
-	<link rel="preload" as="style" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js" /><link rel="modulepreload" as="script" href="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js" /><link rel="stylesheet" href="http://scrollytelling.test/build/assets/site-K3BrQlGi.css" /><script type="module" src="http://scrollytelling.test/build/assets/site-l0sNRNKZ.js"></script><script type="module" src="http://scrollytelling.test/build/assets/lottie.min-CHTNzAdv.js"></script>
-
-	
 	<script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
 
 
@@ -17,18 +14,8 @@
 	<link rel="icon" type="image/x-icon" href="../favicon.ico">
 	<script type="module" src="https://cdn.jsdelivr.net/npm/zero-md@3"></script>
 
-	<link rel="stylesheet" href="../build/assets/jquery-ui-CaUesXpy.css">
-	<link rel="stylesheet" href="../build/assets/mmh1xmw-6z2rm5lq.css">
-	<link rel="stylesheet" href="../build/assets/site-K3BrQlGi.css">
-	<link rel="stylesheet" href="../build/assets/style-BbyUD8Jw.css">
-	<link rel="stylesheet" href="../build/assets/viewer-DLW-EvGW.css">
-	<script type="module" src="../build/assets/jquery-3.6.0.min-DQVDBd0E.js"></script>
-	<script type="module" src="../build/assets/jquery-ui-CrBkTqTu.js"></script>
+	<link rel="stylesheet" href="../build/assets/site-CjHbFU9F.css">
 	<script type="module" src="../build/assets/lottie.min-CHTNzAdv.js"></script>
-	<script type="module" src="../build/assets/scr-actions-Da-6faUE.js"></script>
-	<script type="module" src="../build/assets/scr-delete-l0sNRNKZ.js"></script>
-	<script type="module" src="../build/assets/scr-display-C_sVqv-E.js"></script>
-	<script type="module" src="../build/assets/scr-send-l0sNRNKZ.js"></script>
 	<script type="module" src="../build/assets/site-l0sNRNKZ.js"></script>
 </head>
 
@@ -36,6 +23,7 @@
 	<main id="story-container"
     class="w-full h-screen bg-white mt-0 pt-0 overflow-hidden">
     
+    <meta name="csrf-token" content="R4tCcacSvc8Ej1Q9gbmK02JsOpmSY5HelbK0ixee">
     <div
         class="branch-container flex flex-nowrap gap-0 
                horizontal-scroll flex-row overflow-x-auto overflow-y-hidden items-center h-screen w-full">
@@ -43,6 +31,14 @@
         
         
         <section
+            data-tile="0"
+            data-tile-id="9b91e4f4-366c-4605-8951-1234f7201478"
+            
+            data-parallax-pin="true"
+            data-parallax-speed="1"
+            data-parallax-fade="false"
+            data-parallax-scale="false"
+            
             class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 w-auto min-w-0 h-screen">
 
 
@@ -53,7 +49,8 @@
 
 
                 
-                <div class="relative"
+                <div class="live-preview-layer relative"
+                    data-layer="0"
                     style="width: 100%; height: 100%; left: 0%; top: 0%;">
 
                     
@@ -80,8 +77,9 @@
 
 
                 
-                <div class="absolute"
-                    style="width: 33%; height: 33%; left: 13%; top: 13%;">
+                <div class="live-preview-layer absolute"
+                    data-layer="1"
+                    style="width: 73%; height: 73%; left: 3%; top: 56%;">
 
                     
 
@@ -103,12 +101,13 @@
 
             
             <div class="object new_set w-full h-full min-w-0 min-h-0 pointer-events-none"
-                style="z-index: 1; grid-area: 1 / 1; position: relative;">
+                style="z-index: 3; grid-area: 1 / 1; position: relative;">
 
 
                 
-                <div class="absolute"
-                    style="width: 100%; height: 100%; left: 15%; top: 0%;">
+                <div class="live-preview-layer absolute"
+                    data-layer="2"
+                    style="width: 112%; height: 112%; left: -16.89%; top: -27.3441%;">
 
                     
 
@@ -119,9 +118,7 @@
                         <div class="w-full h-full flex items-center justify-center p-8">
                             <div class="pointer-events-auto max-w-2xl max-h-[85%] bg-white/90 backdrop-blur-md p-8 sm:p-12 rounded-[2rem] shadow-2xl border border-white/50 overflow-y-auto custom-scrollbar">
                                 <div class="prose prose-indigo prose-lg leading-relaxed text-indigo-950/90 font-medium">
-                                    <h1>Some additional Title</h1>
-<h2>And a sub</h2>
-<p>And some random commentary.</p>
+                                    <h1>Some NEWER Title</h1>
 
                                 </div>
                             </div>
@@ -134,13 +131,29 @@
             </div>
 
             
-
+<!--
             
             
+            <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
+                <div
+                    class="pointer-events-auto max-w-4xl prose prose-indigo prose-2xl text-center bg-white/60 backdrop-blur-md p-12 rounded-[2.5rem] shadow-2xl border border-white/40 text-indigo-950 font-semibold">
+                    Some random copy about the story goes here.
+                </div>
+            </div>
+            
+             -->
 
         </section>
         
         <section
+            data-tile="1"
+            data-tile-id="17fd72b1-b50f-408e-808d-f37240f65f37"
+            
+            data-parallax-pin="true"
+            data-parallax-speed="1"
+            data-parallax-fade="true"
+            data-parallax-scale="false"
+            
             class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 w-auto min-w-0 h-screen">
 
 
@@ -151,8 +164,9 @@
 
 
                 
-                <div class="relative"
-                    style="width: 100%; height: 100%; left: 0%; top: 0%;">
+                <div class="live-preview-layer relative"
+                    data-layer="0"
+                    style="width: 114.135%; height: 114.135%; left: -13.927%; top: -10.5985%;">
 
                     
 
@@ -178,8 +192,9 @@
 
 
                 
-                <div class="absolute"
-                    style="width: 26%; height: 26%; left: 9%; top: 6%;">
+                <div class="live-preview-layer absolute"
+                    data-layer="1"
+                    style="width: 112%; height: 112%; left: -33%; top: -31%;">
 
                     
 
@@ -200,21 +215,29 @@
             </div>
 
             
-
+<!--
             
             
             <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
                 <div
                     class="pointer-events-auto max-w-4xl prose prose-indigo prose-2xl text-center bg-white/60 backdrop-blur-md p-12 rounded-[2.5rem] shadow-2xl border border-white/40 text-indigo-950 font-semibold">
-                    <p>Some Content for Tile Number 2.</p>
-
+                    Some Content for Tile Number 2.
                 </div>
             </div>
             
+             -->
 
         </section>
         
         <section
+            data-tile="2"
+            data-tile-id="6522a39d-55ce-4d7f-8798-9c856babefc5"
+            
+            data-parallax-pin="true"
+            data-parallax-speed="1"
+            data-parallax-fade="false"
+            data-parallax-scale="false"
+            
             class="tile relative grid flex-shrink-0 bg-white overflow-hidden m-0 p-0 w-auto min-w-0 h-screen">
 
 
@@ -225,7 +248,8 @@
 
 
                 
-                <div class="relative"
+                <div class="live-preview-layer relative"
+                    data-layer="0"
                     style="width: 100%; height: 100%; left: 0%; top: 0%;">
 
                     
@@ -252,8 +276,9 @@
 
 
                 
-                <div class="absolute"
-                    style="width: 55%; height: 55%; left: 25%; top: 0%;">
+                <div class="live-preview-layer absolute"
+                    data-layer="1"
+                    style="width: 141%; height: 141%; left: -29.4303%; top: -45.9749%;">
 
                     
 
@@ -279,8 +304,9 @@
 
 
                 
-                <div class="absolute"
-                    style="width: 31%; height: 31%; left: 60%; top: 44%;">
+                <div class="live-preview-layer absolute"
+                    data-layer="2"
+                    style="width: 19%; height: 19%; left: 65%; top: 49%;">
 
                     
                     <a href="../a-branch-on-paragliding/index.html"
@@ -302,17 +328,17 @@
             </div>
 
             
-
+<!--
             
             
             <div class="absolute inset-0 flex items-center justify-center p-12 z-20 pointer-events-none">
                 <div
                     class="pointer-events-auto max-w-4xl prose prose-indigo prose-2xl text-center bg-white/60 backdrop-blur-md p-12 rounded-[2.5rem] shadow-2xl border border-white/40 text-indigo-950 font-semibold">
-                    <p>Demo Content</p>
-
+                    Demo Content
                 </div>
             </div>
             
+             -->
 
         </section>
         
@@ -389,6 +415,107 @@
 
     
 </style>
+
+
+
+
+
+<!-- GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script>
+    (() => {
+        const initParallax = () => {
+            gsap.registerPlugin(ScrollTrigger);
+
+            const isVertical = false;
+            const scroller = isVertical ? "#story-container" : ".branch-container";
+            const tiles = gsap.utils.toArray(".tile");
+
+            tiles.forEach((tile, index) => {
+                const isPin = tile.getAttribute("data-parallax-pin") === "true";
+                const speed = parseFloat(tile.getAttribute("data-parallax-speed")) || 1.0;
+
+                // 1. Stacking/Pinning Effect
+                if (isPin && index < tiles.length - 1) {
+                    ScrollTrigger.create({
+                        trigger: tile,
+                        scroller: scroller,
+                        start: isVertical ? "top top" : "left left",
+                        end: isVertical ? "bottom top" : "right left",
+                        pin: true,
+                        pinSpacing: false,
+                        horizontal: !isVertical,
+                        invalidateOnRefresh: true
+                    });
+                }
+
+                // 2. Parallax Speed (if speed is not 1.0)
+                if (speed !== 1.0) {
+                    const yVal = (1 - speed) * 100;
+                    const layers = tile.querySelectorAll(".object");
+                    if (layers.length > 0) {
+                        gsap.fromTo(layers, {
+                            y: isVertical ? `${yVal}vh` : 0,
+                            x: !isVertical ? `${yVal}vw` : 0
+                        }, {
+                            y: isVertical ? `${-yVal}vh` : 0,
+                            x: !isVertical ? `${-yVal}vw` : 0,
+                            ease: "none",
+                            scrollTrigger: {
+                                trigger: tile,
+                                scroller: scroller,
+                                start: isVertical ? "top bottom" : "left right",
+                                end: isVertical ? "bottom top" : "right left",
+                                horizontal: !isVertical,
+                                scrub: true
+                            }
+                        });
+                    }
+                }
+
+                // 3. Fade / Scale Stacking Effects
+                const nextTile = tiles[index + 1];
+                if (nextTile) {
+                    const fade = tile.getAttribute("data-parallax-fade") === "true";
+                    const scale = tile.getAttribute("data-parallax-scale") === "true";
+
+                    if (fade || scale) {
+                        const animProps = {};
+                        if (fade) animProps.opacity = 0.1;
+                        if (scale) {
+                            animProps.scale = 0.85;
+                            animProps.transformOrigin = isVertical ? "center bottom" : "right center";
+                        }
+
+                        const layers = tile.querySelectorAll(".object");
+                        if (layers.length > 0) {
+                            gsap.to(layers, {
+                                ...animProps,
+                                ease: "none",
+                                scrollTrigger: {
+                                    trigger: nextTile,
+                                    scroller: scroller,
+                                    start: isVertical ? "top bottom" : "left right",
+                                    end: isVertical ? "top top" : "left left",
+                                    horizontal: !isVertical,
+                                    scrub: true
+                                }
+                            });
+                        }
+                    }
+                }
+            });
+        };
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", initParallax);
+        } else {
+            initParallax();
+        }
+    })();
+</script>
+
 
 
 	<script>

@@ -199,6 +199,17 @@ class SSGUtilityController extends CpController
                 $content = preg_replace('/<script type="module" src="http(?:s)?:\/\/(?:\[::1\]|localhost|127\.0\.0\.1):5173[^>]+><\/script>/i', '', $content);
                 $content = preg_replace('/<link rel="stylesheet" href="http(?:s)?:\/\/(?:\[::1\]|localhost|127\.0\.0\.1):5173[^>]*"\s*\/?>/i', '', $content);
 
+                // Strip the entire {{ vite }} helper output block (absolute-domain preload/stylesheet/script tags)
+                // These are replaced by injecting the manifest tags below, so we remove them to avoid duplicates.
+                $appUrl = rtrim(config('app.url'), '/');
+                if ($appUrl) {
+                    $cleanAppUrl = preg_replace('/^https?:\/\//i', '', $appUrl);
+                    $escapedAppUrl = preg_quote($cleanAppUrl, '/');
+                    // Remove <link rel="preload"> / <link rel="modulepreload"> / <link rel="stylesheet"> / <script> pointing to our domain
+                    $content = preg_replace('/<link[^>]+href="https?:\/\/' . $escapedAppUrl . '[^"]*"[^>]*\/?>\s*/i', '', $content);
+                    $content = preg_replace('/<script[^>]+src="https?:\/\/' . $escapedAppUrl . '[^"]*"[^>]*><\/script>\s*/i', '', $content);
+                }
+
                 // Inject manifest tags
                 if ($injectionCode && str_contains($content, '</head>')) {
                     $injected = str_replace('{PREFIX}', $prefixWithSlash, $injectionCode);
@@ -241,6 +252,25 @@ class SSGUtilityController extends CpController
                     
                     return $attr . '="' . $prefixWithSlash . $pathParam . '/index.html"';
                 }, $content);
+
+                // Rewrite any remaining absolute domain URLs (href/src) to be relative
+                // (catches anything not already stripped above, e.g. in inline styles or data attrs)
+                if (!empty($appUrl)) {
+                    $content = preg_replace_callback('/(href|src)="https?:\/\/' . $escapedAppUrl . '\/([^"]*)"/i', function($matches) use ($prefixWithSlash) {
+                        $attr = $matches[1];
+                        $pathParam = $matches[2];
+                        
+                        if (preg_match('/\.[a-zA-Z0-9]+(?:\?.*)?$/', $pathParam)) {
+                            return $attr . '="' . $prefixWithSlash . $pathParam . '"';
+                        }
+                        
+                        if (empty($pathParam)) {
+                            return $attr . '="' . $prefixWithSlash . 'index.html"';
+                        }
+                        
+                        return $attr . '="' . $prefixWithSlash . $pathParam . '/index.html"';
+                    }, $content);
+                }
 
                 File::put($file->getPathname(), $content);
             }

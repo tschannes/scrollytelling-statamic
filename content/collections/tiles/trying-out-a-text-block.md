@@ -3,21 +3,23 @@ id: f8ec6f06-c0c9-422c-aee9-8751529817d7
 blueprint: tile
 title: 'Trying out a Text Block'
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1775736811
+updated_at: 1780997265
 add_layers:
   -
     id: MmW7RSMcxyP36w7zgBXqh
     layer_type: asset
     layer_asset: first-tests/misti-1.jpg
-    lottie_loop: true
-    lottie_autoplay: true
     layer_z_index: 0
     layer_size: 100
     layer_x: 0
     layer_y: 0
     type: new_set
     enabled: true
-parent_parallax: false
+parent_parallax: true
+parallax_pin: true
+parallax_speed: 1.0
+parallax_scale: false
+parallax_fade: false
 ---
 # Uno credas gemino peremit
 
