@@ -3,10 +3,9 @@ id: f8ec6f06-c0c9-422c-aee9-8751529817d7
 blueprint: tile
 title: 'Trying out a Text Block'
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1780997265
+updated_at: 1781004709
 add_layers:
-  -
-    id: MmW7RSMcxyP36w7zgBXqh
+  - id: MmW7RSMcxyP36w7zgBXqh
     layer_type: asset
     layer_asset: first-tests/misti-1.jpg
     layer_z_index: 0
@@ -16,7 +15,7 @@ add_layers:
     type: new_set
     enabled: true
 parent_parallax: true
-parallax_pin: true
+parallax_pin: false
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: false

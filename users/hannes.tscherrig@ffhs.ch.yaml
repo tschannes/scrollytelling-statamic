@@ -13,3 +13,9 @@ preferences:
       view: tree
   start_page: collections/stories
   theme: null
+  nav:
+    tools:
+      reorder:
+        - 'content::ssg_exporter'
+      items:
+        'content::ssg_exporter': '@move'

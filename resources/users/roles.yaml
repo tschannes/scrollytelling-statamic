@@ -13,15 +13,6 @@ editor:
   title: Editor
   permissions:
     - 'access cp'
-    - 'view tiles entries'
-    - 'edit tiles entries'
-    - 'create tiles entries'
-    - 'delete tiles entries'
-    - 'publish tiles entries'
-    - 'reorder tiles entries'
-    - 'edit other authors tiles entries'
-    - 'publish other authors tiles entries'
-    - 'delete other authors tiles entries'
     - 'view stories entries'
     - 'edit stories entries'
     - 'create stories entries'
@@ -31,6 +22,15 @@ editor:
     - 'edit other authors stories entries'
     - 'publish other authors stories entries'
     - 'delete other authors stories entries'
+    - 'view tiles entries'
+    - 'edit tiles entries'
+    - 'create tiles entries'
+    - 'delete tiles entries'
+    - 'publish tiles entries'
+    - 'reorder tiles entries'
+    - 'edit other authors tiles entries'
+    - 'publish other authors tiles entries'
+    - 'delete other authors tiles entries'
     - 'view assets assets'
     - 'upload assets assets'
     - 'edit assets folders'
@@ -38,4 +38,12 @@ editor:
     - 'move assets assets'
     - 'rename assets assets'
     - 'delete assets assets'
-    - 'view users'
+  preferences:
+    nav:
+      tools:
+        reorder:
+          - 'content::ssg_exporter'
+        items:
+          'content::ssg_exporter': '@move'
+    start_page: collections
+    theme: null

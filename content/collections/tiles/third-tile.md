@@ -3,8 +3,7 @@ id: 6522a39d-55ce-4d7f-8798-9c856babefc5
 blueprint: tile
 title: 'Lottie Link Tile'
 add_layers:
-  -
-    id: Veu3apqhGtfeODR34j3qh
+  - id: Veu3apqhGtfeODR34j3qh
     layer_asset: first-tests/03-home-bottom-section.webp
     layer_z_index: 0
     type: new_set
@@ -13,20 +12,18 @@ add_layers:
     layer_x: 0
     layer_y: 0
     layer_type: asset
-  -
-    id: nhz_SwZzmUFlkliHvdf5H
+  - id: nhz_SwZzmUFlkliHvdf5H
     layer_asset: first-tests/isometric-plane.lottie
     lottie_loop: true
     lottie_autoplay: true
     layer_z_index: 0
     layer_size: 141
-    layer_x: -29.4303
-    layer_y: -45.9749
+    layer_x: -29
+    layer_y: -45
     type: new_set
     enabled: true
     layer_type: asset
-  -
-    id: lHUmLBfjd1wuvXhljA2U2
+  - id: lHUmLBfjd1wuvXhljA2U2
     layer_z_index: 4
     layer_size: 19
     layer_x: 65
@@ -36,9 +33,9 @@ add_layers:
     layer_type: link
     link_to_branch: fb71329d-770e-4d5b-b756-c59b40fbc6e4
 updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1780664167
-parallax_pin: true
-parallax_speed: 0.0
+updated_at: 1781004652
+parallax_pin: false
+parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: false
 parent_parallax: true

@@ -7,6 +7,7 @@ use Statamic\Facades\CP\Nav;
 use Statamic\Statamic;
 use Statamic\Facades\Entry;
 use Statamic\Events\EntrySaved;
+use Statamic\Events\UserRegistered;
 use Illuminate\Support\Facades\Event;
 
 class AppServiceProvider extends ServiceProvider
@@ -41,6 +42,16 @@ class AppServiceProvider extends ServiceProvider
             if ($entry->collectionHandle() === 'stories') {
                 $this->updateAllTilesParallaxStatus();
             }
+        });
+
+        // Send activation email to newly registered users so they must verify
+        // their email address before they can log into /cp.
+        Event::listen(UserRegistered::class, function (UserRegistered $event) {
+            $user = $event->user;
+            // Log the user out so they can't access the CP until activated
+            auth()->logout();
+            // Generate a token and dispatch the activation notification
+            $user->generateTokenAndSendActivateAccountNotification();
         });
 
         // Add a direct API route for visual editing within Story previews

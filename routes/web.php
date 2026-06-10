@@ -1,6 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Statamic\Statamic;
+
+/*
+|--------------------------------------------------------------------------
+| User Registration
+|--------------------------------------------------------------------------
+| Exposes the /register page using Statamic's built-in user:register_form
+| tag. New users are auto-assigned the 'editor' role.
+|
+*/
+
+Route::statamic('register', 'register', [
+    'title' => 'Register',
+    'layout' => 'layout_simple',
+]);
+
+Route::statamic('login', 'login', [
+    'title' => 'Login',
+    'layout' => 'layout_simple',
+]);
 
 Route::statamic('stories', 'stories/index', [
     'title' => 'Stories'

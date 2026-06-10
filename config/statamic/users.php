@@ -58,7 +58,7 @@ return [
     */
 
     'new_user_roles' => [
-        //
+        'editor',
     ],
 
     /*

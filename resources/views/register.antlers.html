@@ -1,0 +1,292 @@
+{{#
+    Registration page — uses Statamic's built-in user:register_form tag.
+    New users are auto-assigned the 'editor' role (configured in config/statamic/users.php).
+    After registration, they receive an activation email before accessing /cp.
+#}}
+
+<style>
+    .auth-card {
+        width: 100%;
+        max-width: 420px;
+        background: var(--color-card);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius);
+        padding: 2.5rem;
+        box-shadow:
+            0 0 0 1px rgba(255,255,255,0.04) inset,
+            0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .auth-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.625rem;
+        margin-bottom: 2rem;
+    }
+
+    .auth-logo-icon {
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(135deg, var(--color-accent), #8b5cf6);
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .auth-logo-icon svg {
+        width: 20px;
+        height: 20px;
+        fill: white;
+    }
+
+    .auth-logo-name {
+        font-size: 1.125rem;
+        font-weight: 600;
+        color: var(--color-text);
+        letter-spacing: -0.02em;
+    }
+
+    .auth-heading {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--color-text);
+        letter-spacing: -0.03em;
+        margin-bottom: 0.375rem;
+    }
+
+    .auth-subheading {
+        font-size: 0.875rem;
+        color: var(--color-muted);
+        margin-bottom: 2rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.25rem;
+    }
+
+    .form-label {
+        display: block;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--color-muted);
+        margin-bottom: 0.5rem;
+        letter-spacing: 0.01em;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--color-border);
+        border-radius: 8px;
+        color: var(--color-text);
+        font-size: 0.9375rem;
+        font-family: inherit;
+        transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+        outline: none;
+    }
+
+    .form-input:focus {
+        border-color: var(--color-accent);
+        background: rgba(99, 102, 241, 0.06);
+        box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18);
+    }
+
+    .form-input::placeholder {
+        color: rgba(136, 146, 164, 0.5);
+    }
+
+    .form-input.has-error {
+        border-color: var(--color-error);
+        box-shadow: 0 0 0 3px rgba(248, 113, 113, 0.15);
+    }
+
+    .form-error {
+        font-size: 0.8125rem;
+        color: var(--color-error);
+        margin-top: 0.375rem;
+        display: flex;
+        align-items: center;
+        gap: 0.375rem;
+    }
+
+    .form-error::before {
+        content: '!';
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 14px;
+        height: 14px;
+        background: var(--color-error);
+        color: white;
+        border-radius: 50%;
+        font-size: 0.625rem;
+        font-weight: 700;
+        flex-shrink: 0;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 0.8125rem 1rem;
+        background: linear-gradient(135deg, var(--color-accent), #8b5cf6);
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        font-family: inherit;
+        cursor: pointer;
+        transition: opacity 0.15s, transform 0.1s, box-shadow 0.15s;
+        box-shadow: 0 4px 16px rgba(99, 102, 241, 0.35);
+        margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover {
+        opacity: 0.9;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(99, 102, 241, 0.45);
+    }
+
+    .btn-primary:active {
+        transform: translateY(0);
+    }
+
+    .auth-divider {
+        height: 1px;
+        background: var(--color-border);
+        margin: 1.75rem 0;
+    }
+
+    .auth-footer {
+        text-align: center;
+        font-size: 0.875rem;
+        color: var(--color-muted);
+    }
+
+    .auth-footer a {
+        color: var(--color-accent-hover);
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.15s;
+    }
+
+    .auth-footer a:hover {
+        color: white;
+        text-decoration: underline;
+    }
+
+    .alert-success {
+        background: rgba(52, 211, 153, 0.1);
+        border: 1px solid rgba(52, 211, 153, 0.25);
+        border-radius: 8px;
+        padding: 1rem;
+        color: var(--color-success);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.5;
+    }
+
+    .alert-success strong {
+        display: block;
+        margin-bottom: 0.25rem;
+    }
+</style>
+
+<div class="auth-card">
+    <div class="auth-logo">
+        <div class="auth-logo-icon">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+            </svg>
+        </div>
+        <span class="auth-logo-name">{{ config:app:name }}</span>
+    </div>
+
+    {{ user:register_form redirect="/cp" }}
+
+        {{ if success }}
+            <div class="alert-success">
+                <strong>Account created — check your inbox!</strong>
+                We've sent you an activation email. Click the link in the email to activate your account and log in.
+            </div>
+            <div class="auth-footer">
+                <a href="/cp">Back to login</a>
+            </div>
+        {{ else }}
+
+            <h1 class="auth-heading">Create an account</h1>
+            <p class="auth-subheading">Register to access the content editor.</p>
+
+            <div class="form-group">
+                <label class="form-label" for="register-name">Full name</label>
+                <input
+                    id="register-name"
+                    class="form-input{{ if error:name }} has-error{{ /if }}"
+                    type="text"
+                    name="name"
+                    value="{{ old:name }}"
+                    placeholder="Jane Smith"
+                    autocomplete="name"
+                    required
+                >
+                {{ if error:name }}<p class="form-error">{{ error:name }}</p>{{ /if }}
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="register-email">Email address</label>
+                <input
+                    id="register-email"
+                    class="form-input{{ if error:email }} has-error{{ /if }}"
+                    type="email"
+                    name="email"
+                    value="{{ old:email }}"
+                    placeholder="jane@example.com"
+                    autocomplete="email"
+                    required
+                >
+                {{ if error:email }}<p class="form-error">{{ error:email }}</p>{{ /if }}
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="register-password">Password</label>
+                <input
+                    id="register-password"
+                    class="form-input{{ if error:password }} has-error{{ /if }}"
+                    type="password"
+                    name="password"
+                    placeholder="Min. 8 characters"
+                    autocomplete="new-password"
+                    required
+                >
+                {{ if error:password }}<p class="form-error">{{ error:password }}</p>{{ /if }}
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="register-password-confirm">Confirm password</label>
+                <input
+                    id="register-password-confirm"
+                    class="form-input{{ if error:password_confirmation }} has-error{{ /if }}"
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Repeat your password"
+                    autocomplete="new-password"
+                    required
+                >
+                {{ if error:password_confirmation }}<p class="form-error">{{ error:password_confirmation }}</p>{{ /if }}
+            </div>
+
+            <button id="register-submit" type="submit" class="btn-primary">
+                Create account
+            </button>
+
+            <div class="auth-divider"></div>
+
+            <div class="auth-footer">
+                Already have an account? <a href="/cp">Sign in</a>
+            </div>
+
+        {{ /if }}
+
+    {{ /user:register_form }}
+</div>
