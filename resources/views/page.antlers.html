@@ -1,0 +1,63 @@
+<div class="w-full h-screen overflow-y-auto bg-slate-50 dark:bg-zinc-900 text-slate-800 dark:text-slate-200">
+    <div class="max-w-4xl mx-auto px-6 py-16">
+        {{# Back Button / Navigation #}}
+        <div class="mb-10 flex items-center justify-between">
+            <a href="/" class="inline-flex items-center gap-2 text-sm font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 transition-colors group">
+                <svg class="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                Back to Home
+            </a>
+            
+            {{ if author }}
+                <div class="text-xs text-slate-500 dark:text-slate-400">
+                    Written by <span class="font-semibold text-slate-700 dark:text-slate-300">{{ author:name }}</span>
+                </div>
+            {{ /if }}
+        </div>
+
+        {{# Page Header #}}
+        <header class="mb-12 pb-8 border-b border-slate-200 dark:border-slate-800">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-4">
+                {{ title }}
+            </h1>
+        </header>
+
+        {{# Page Content (Legacy/Direct Content) #}}
+        {{ if content }}
+            <article class="prose prose-slate dark:prose-invert prose-indigo prose-lg max-w-none leading-relaxed mb-12">
+                {{ content }}
+            </article>
+        {{ /if }}
+
+        {{# Replicator Content #}}
+        {{ if replicator_field }}
+            <div class="space-y-12">
+                {{ replicator_field }}
+                    {{ if type == 'new_section' }}
+                        <div class="grid grid-cols-1 {{ if section_asset }}md:grid-cols-2{{ /if }} gap-8 items-center bg-white dark:bg-zinc-800/30 p-6 md:p-8 rounded-2xl border border-slate-100 dark:border-zinc-800/80 shadow-sm">
+                            
+                            {{# Left Column: Bard Text Content #}}
+                            <div class="prose prose-slate dark:prose-invert prose-indigo max-w-none">
+                                {{ section }}
+                            </div>
+
+                            {{# Right Column: Assets #}}
+                            {{ if section_asset }}
+                                <div class="flex flex-col gap-4">
+                                    {{ section_asset }}
+                                        <div class="overflow-hidden rounded-xl border border-slate-200/50 dark:border-zinc-700/50 shadow-md">
+                                            <img src="{{ url }}" alt="{{ alt ?? title }}" class="w-full h-auto object-cover max-h-[450px] hover:scale-[1.02] transition-transform duration-500">
+                                        </div>
+                                    {{ /section_asset }}
+                                </div>
+                            {{ /if }}
+
+                        </div>
+                    {{ /if }}
+                {{ /replicator_field }}
+            </div>
+        {{ /if }}
+
+    </div>
+</div>

@@ -22,6 +22,22 @@ Route::statamic('login', 'login', [
     'layout' => 'layout_simple',
 ]);
 
+Route::statamic('forgot-password', 'forgot-password', [
+    'title' => 'Forgot Password',
+    'layout' => 'layout_simple',
+]);
+
+Route::get('/reset-password/{token}', function ($token) {
+    return (new \Statamic\View\View)
+        ->template('reset-password')
+        ->layout('layout_simple')
+        ->with([
+            'title' => 'Reset Password',
+            'token' => $token,
+            'email' => request('email'),
+        ]);
+})->name('statamic.password.reset');
+
 Route::statamic('stories', 'stories/index', [
     'title' => 'Stories'
 ]);

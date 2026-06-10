@@ -1,0 +1,77 @@
+title: Page
+tabs:
+  main:
+    display: Main
+    sections:
+      -
+        fields:
+          -
+            handle: title
+            field:
+              type: text
+              required: true
+              validate:
+                - required
+          -
+            handle: content
+            field:
+              type: markdown
+              display: Content
+              localizable: true
+          -
+            handle: author
+            field:
+              type: users
+              display: Author
+              default: current
+              localizable: true
+              max_items: 1
+          -
+            handle: replicator_field
+            field:
+              type: replicator
+              display: 'Content Section'
+              sets:
+                new_set_group:
+                  display: 'New Set Group'
+                  sets:
+                    new_section:
+                      display: 'New Section'
+                      fields:
+                        -
+                          handle: section
+                          field:
+                            buttons:
+                              - h2
+                              - h3
+                              - bold
+                              - italic
+                              - unorderedlist
+                              - orderedlist
+                              - removeformat
+                              - quote
+                              - anchor
+                              - image
+                              - table
+                              - h4
+                            container: assets
+                            remove_empty_nodes: false
+                            type: bard
+                            display: Section
+                        -
+                          handle: section_asset
+                          field:
+                            container: assets
+                            type: assets
+                            display: 'Section Asset'
+  sidebar:
+    display: Sidebar
+    sections:
+      -
+        fields:
+          -
+            handle: slug
+            field:
+              type: slug
+              localizable: true
+              validate: 'max:200'
