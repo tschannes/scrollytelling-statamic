@@ -189,6 +189,9 @@ class SSGUtilityController extends CpController
             if ($file->getExtension() === 'html') {
                 $content = File::get($file->getPathname());
 
+                // Remove top-left navigation buttons from exported stories
+                $content = preg_replace('/<nav class="fixed top-12 left-12 z-50[^>]*">.*?<\/nav>/is', '', $content);
+
                 // Calculate relative prefix
                 $relativePath = substr($file->getPathname(), strlen($staticPath) + 1);
                 $depth = substr_count($relativePath, '/');

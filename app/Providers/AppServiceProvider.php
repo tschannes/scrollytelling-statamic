@@ -44,16 +44,6 @@ class AppServiceProvider extends ServiceProvider
             }
         });
 
-        // Send activation email to newly registered users so they must verify
-        // their email address before they can log into /cp.
-        Event::listen(UserRegistered::class, function (UserRegistered $event) {
-            $user = $event->user;
-            // Log the user out so they can't access the CP until activated
-            auth()->logout();
-            // Generate a token and dispatch the activation notification
-            $user->generateTokenAndSendActivateAccountNotification();
-        });
-
         // Add a direct API route for visual editing within Story previews
         \Illuminate\Support\Facades\Route::post('/_scrollytelling/api/save-layer', function (\Illuminate\Http\Request $request) {
             $tileId = $request->input('tile_id');
