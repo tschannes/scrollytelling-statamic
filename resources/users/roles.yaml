@@ -44,6 +44,8 @@ editor:
         reorder:
           - 'content::ssg_exporter'
         items:
-          'content::ssg_exporter': '@move'
+          'content::ssg_exporter':
+            action: '@move'
+            display: 'Export Story'
     start_page: collections
     theme: null

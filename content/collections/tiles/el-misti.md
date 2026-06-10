@@ -23,10 +23,10 @@ add_layers:
     layer_y: 0
     type: new_set
     enabled: true
-updated_by: 05989e52-cea4-419f-8a45-45c76a41ebe6
-updated_at: 1781004695
+updated_by: 5cc4b0bd-8e44-4353-a5b7-b17fea9a99de
+updated_at: 1781081433
 parent_parallax: true
-parallax_pin: false
+parallax_pin: true
 parallax_speed: 1.0
 parallax_scale: false
 parallax_fade: false

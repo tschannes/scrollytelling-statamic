@@ -3,3 +3,7 @@ roles:
   - editor
 id: 5cc4b0bd-8e44-4353-a5b7-b17fea9a99de
 password_hash: $2y$12$gzFGQoXJR77dR57jNCka8eaOs53TR3b0gbFaPzNeuMk12gt72yX3C
+preferences:
+  collections:
+    stories:
+      view: tree

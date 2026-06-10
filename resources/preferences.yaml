@@ -1,0 +1,8 @@
+nav:
+  tools:
+    reorder:
+      - 'content::ssg_exporter'
+    items:
+      'content::ssg_exporter':
+        action: '@move'
+        display: 'Export Story'
